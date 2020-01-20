@@ -10,18 +10,18 @@ const useStyles = createUseStyles({
 })
 
 export default ({
-	setFormVals, formVals, key, label,
+	setFormVals, formVals, formKey, label,
 }) => {
 	const classes = useStyles()
-	const onChange = (e) => setFormVals({ ...formVals, [key]: e.target.value })
+	const onChange = (e) => setFormVals({ ...formVals, [formKey]: e.target.value })
 
 	return (
 		<Label label={label}>
 			<input
 				type="text"
 				className={classes.textInput}
-				name={key}
-				value={formVals[key]}
+				name={formKey}
+				value={formVals[formKey]}
 				onChange={onChange}
 			/>
 		</Label>

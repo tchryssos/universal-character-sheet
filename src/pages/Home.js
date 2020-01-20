@@ -1,10 +1,19 @@
 import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss'
 
+import TextInput from 'components/TextInput'
+import HashViewer from 'components/HashViewer'
+
 const useStyles = createUseStyles({
 	wrapper: {
 		display: 'flex',
-		height: '100%',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		margin: [[16, '10%']],
+	},
+	form: {
+		display: 'flex',
+		flexDirection: 'column',
 	},
 })
 
@@ -15,12 +24,19 @@ const Home = () => {
 	// On each form field change, update the encoded string
 	const json = JSON.stringify(formVals)
 	const hash = window.btoa(json)
+	console.log(hash, formVals)
 
 	return (
 		<div className={classes.wrapper}>
-			<form>
-				
+			<form className={classes.form}>
+				<TextInput
+					label="Character Name"
+					formKey="charName"
+					setFormVals={setFormVals}
+					formVals={setFormVals}
+				/>
 			</form>
+			<HashViewer string={hash} />
 		</div>
 	)
 }
