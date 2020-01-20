@@ -3,7 +3,10 @@ import { createUseStyles } from 'react-jss'
 
 const useStyles = createUseStyles({
 	label: {
-
+		display: 'flex',
+	},
+	labelText: {
+		marginRight: 8,
 	},
 })
 
@@ -12,7 +15,10 @@ export default ({ label, key, children }) => {
 	if (label) {
 		return (
 			<label htmlFor={key} className={classes.label}>
-				{label}
+				<p className={classes.labelText}>
+					{label}
+					:
+				</p>
 				{children}
 			</label>
 		)

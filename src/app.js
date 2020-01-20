@@ -17,12 +17,13 @@ const useStyles = createUseStyles(() => {
 
 	return {
 		'@import': [
-			// Import fonts here
+			"url('https://fonts.googleapis.com/css?family=Lato&display=swap')",
 		],
 		'@global': {
 			html: baseStyle,
 			body: {
 				...baseStyle,
+				fontFamily: "'Lato', sans-serif",
 				position: 'relative',
 			},
 			'#app': baseStyle,

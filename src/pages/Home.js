@@ -24,7 +24,6 @@ const Home = () => {
 	// On each form field change, update the encoded string
 	const json = JSON.stringify(formVals)
 	const hash = window.btoa(json)
-	console.log(hash, formVals)
 
 	return (
 		<div className={classes.wrapper}>
