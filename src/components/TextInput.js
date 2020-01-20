@@ -7,7 +7,7 @@ const useStyles = createUseStyles({
 
 export default ({ setFormVals, formVals, key }) => {
 	const classes = useStyles()
-	const onChange = e => setFormVals({ ...formVals, `${key}`: e.target.value })
+	const onChange = (e) => setFormVals({ ...formVals, [key]: e.target.value })
 
 	return (
 		<input
