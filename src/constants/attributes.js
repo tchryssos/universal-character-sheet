@@ -9,3 +9,12 @@ export const alignments = [
 	'Neutral Evil',
 	'Chaotic Evil',
 ]
+
+export const attributes = [
+	'str',
+	'dex',
+	'con',
+	'int',
+	'wis',
+	'cha',
+]

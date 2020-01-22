@@ -4,6 +4,7 @@ import { createUseStyles } from 'react-jss'
 import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
 import SelectInput from 'components/SelectInput'
+import AbilityScores from 'components/AbilityScores'
 import HashViewer from 'components/HashViewer'
 
 import { alignments } from 'constants/attributes'
@@ -58,6 +59,10 @@ const Home = () => {
 					setFormVals={setFormVals}
 					formVals={formVals}
 					options={alignments}
+				/>
+				<AbilityScores
+					setFormVals={setFormVals}
+					formVals={formVals}
 				/>
 			</form>
 			<HashViewer string={hash} />

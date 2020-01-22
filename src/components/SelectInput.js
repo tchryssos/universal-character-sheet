@@ -13,7 +13,15 @@ const useStyles = createUseStyles({
 })
 
 const Options = ({ options, classes }) => options.map(
-	(option) => <option className={classes.option} value={option}>{option}</option>,
+	(option) => (
+		<option
+			className={classes.option}
+			value={option}
+			key={option}
+		>
+			{option}
+		</option>
+	),
 )
 
 export default ({
