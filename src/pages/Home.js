@@ -8,6 +8,9 @@ import AbilityScores from 'components/AbilityScores'
 import HashViewer from 'components/HashViewer'
 
 import { alignments } from 'constants/attributes'
+import {
+	CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT, schema,
+} from 'constants/schema'
 
 const useStyles = createUseStyles({
 	wrapper: {
@@ -24,7 +27,7 @@ const useStyles = createUseStyles({
 
 const Home = () => {
 	const classes = useStyles()
-	const [formVals, setFormVals] = useState({})
+	const [formVals, setFormVals] = useState(schema)
 
 	// On each form field change, update the encoded string
 	const json = JSON.stringify(formVals)
@@ -35,19 +38,19 @@ const Home = () => {
 			<form className={classes.form}>
 				<TextInput
 					label="Character Name"
-					formKey="charName"
+					formKey={CHAR_NAME}
 					setFormVals={setFormVals}
 					formVals={formVals}
 				/>
 				<TextInput
 					label="Character Class"
-					formKey="charClass"
+					formKey={CHAR_CLASS}
 					setFormVals={setFormVals}
 					formVals={formVals}
 				/>
 				<NumberInput
 					label="Level"
-					formKey="level"
+					formKey={LEVEL}
 					setFormVals={setFormVals}
 					formVals={formVals}
 					min={1}
@@ -55,7 +58,7 @@ const Home = () => {
 				/>
 				<SelectInput
 					label="Alignment"
-					formKey="alignment"
+					formKey={ALIGNMENT}
 					setFormVals={setFormVals}
 					formVals={formVals}
 					options={alignments}

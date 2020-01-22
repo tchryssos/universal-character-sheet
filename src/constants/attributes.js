@@ -1,3 +1,7 @@
+import {
+	STR, DEX, CON, WIS, INT, CHA,
+} from 'constants/schema'
+
 export const alignments = [
 	'Lawful Good',
 	'Neutral Good',
@@ -11,10 +15,5 @@ export const alignments = [
 ]
 
 export const attributes = [
-	'str',
-	'dex',
-	'con',
-	'int',
-	'wis',
-	'cha',
+	STR, DEX, CON, WIS, INT, CHA,
 ]

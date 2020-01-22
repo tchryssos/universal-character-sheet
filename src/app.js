@@ -1,6 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
+import {
+	BrowserRouter, Route, Switch, withRouter,
+} from 'react-router-dom'
 import { createUseStyles } from 'react-jss'
 import Home from 'pages/Home'
 
