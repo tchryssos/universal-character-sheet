@@ -18,6 +18,7 @@ const useStyles = createUseStyles({
 	tableRow: {
 		display: 'flex',
 		alignItems: 'center',
+		textAlign: 'center',
 	},
 	tableHeader: {
 		backgroundColor: shadow,
@@ -31,9 +32,13 @@ const useStyles = createUseStyles({
 	},
 	numberBox: {
 		width: '25%',
+		display: 'flex',
+		justifyContent: 'center',
 	},
 	saveBox: {
 		width: '10%',
+		display: 'flex',
+		justifyContent: 'center',
 	},
 })
 

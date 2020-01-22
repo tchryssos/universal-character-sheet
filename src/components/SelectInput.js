@@ -37,8 +37,9 @@ export default ({
 				name={formKey}
 				value={formVals[formKey]}
 				onChange={onChange}
+				defaultValue="default"
 			>
-				<option selected disabled>-- Choose One --</option>
+				<option value="default" disabled>-- Choose One --</option>
 				<Options options={options} classes={classes} />
 			</select>
 		</Label>
