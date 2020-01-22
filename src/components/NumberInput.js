@@ -11,6 +11,7 @@ const useStyles = createUseStyles({
 
 export default ({
 	setFormVals, formVals, formKey, label,
+	min, max,
 }) => {
 	const classes = useStyles()
 	const onChange = (e) => setFormVals({ ...formVals, [formKey]: e.target.value })
@@ -18,7 +19,9 @@ export default ({
 	return (
 		<Label label={label}>
 			<input
-				type="text"
+				type="number"
+				min={min}
+				max={max}
 				className={classes.textInput}
 				name={formKey}
 				value={formVals[formKey]}

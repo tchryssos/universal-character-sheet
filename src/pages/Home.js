@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss'
 
 import TextInput from 'components/TextInput'
+import NumberInput from 'components/NumberInput'
+import SelectInput from 'components/SelectInput'
 import HashViewer from 'components/HashViewer'
+
+import { alignments } from 'constants/attributes'
 
 const useStyles = createUseStyles({
 	wrapper: {
@@ -32,7 +36,28 @@ const Home = () => {
 					label="Character Name"
 					formKey="charName"
 					setFormVals={setFormVals}
-					formVals={setFormVals}
+					formVals={formVals}
+				/>
+				<TextInput
+					label="Character Class"
+					formKey="charClass"
+					setFormVals={setFormVals}
+					formVals={formVals}
+				/>
+				<NumberInput
+					label="Level"
+					formKey="level"
+					setFormVals={setFormVals}
+					formVals={formVals}
+					min={1}
+					max={20}
+				/>
+				<SelectInput
+					label="Alignment"
+					formKey="alignment"
+					setFormVals={setFormVals}
+					formVals={formVals}
+					options={alignments}
 				/>
 			</form>
 			<HashViewer string={hash} />

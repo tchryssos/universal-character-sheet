@@ -7,23 +7,32 @@ const useStyles = createUseStyles({
 	input: {
 
 	},
+	option: {
+		textTransform: 'uppercase',
+	},
 })
 
+const Options = ({ options, classes }) => options.map(
+	(option) => <option className={classes.option} value={option}>{option}</option>,
+)
+
 export default ({
-	setFormVals, formVals, formKey, label,
+	setFormVals, formVals, formKey, label, options,
 }) => {
 	const classes = useStyles()
 	const onChange = (e) => setFormVals({ ...formVals, [formKey]: e.target.value })
 
 	return (
 		<Label label={label}>
-			<input
-				type="text"
+			<select
 				className={classes.textInput}
 				name={formKey}
 				value={formVals[formKey]}
 				onChange={onChange}
-			/>
+			>
+				<option selected disabled>-- Choose One --</option>
+				<Options options={options} classes={classes} />
+			</select>
 		</Label>
 	)
 }
