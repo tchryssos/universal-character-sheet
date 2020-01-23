@@ -7,7 +7,8 @@ import modCalc from 'util/modCalc'
 import NumberInput from 'components/NumberInput'
 import CheckboxInput from 'components/CheckboxInput'
 
-import { attributes, saves } from 'constants/attributes'
+import { attributes } from 'constants/attributes'
+import { VAL, MOD, PROF } from 'constants/schema'
 import { shadow, white } from 'constants/styles/colors'
 import { fontSizeMd } from 'constants/styles/text'
 
@@ -60,8 +61,6 @@ const TableHeader = ({ classes }) => (
 
 const AttrRows = ({ formVals, setFormVals, classes }) => attributes.map(
 	(attribute) => {
-		const formAttribute = formVals[attribute]
-		const attributeScore = (formAttribute || formAttribute === 0) ? formAttribute : 1
 		return (
 			<div className={classes.tableRow} key={attribute}>
 				<div className={classes.nameBox}>{attribute}</div>
@@ -69,17 +68,23 @@ const AttrRows = ({ formVals, setFormVals, classes }) => attributes.map(
 					<NumberInput
 						min={0}
 						max={30}
-						formKey={attribute}
+						formPath={[attribute, VAL]}
 						formVals={formVals}
 						setFormVals={setFormVals}
 					/>
 				</div>
 				<div className={classes.numberBox}>
-					{modCalc(attributeScore)}
+					<NumberInput
+						min={-5}
+						max={10}
+						readOnly
+						formPath={[attribute, MOD]}
+						formVals={formVals}
+					/>
 				</div>
 				<div className={classes.saveBox}>
 					<CheckboxInput
-						formKey={saves[attribute]}
+						formPath={[attribute, PROF]}
 						formVals={formVals}
 						setFormVals={setFormVals}
 					/>

@@ -10,7 +10,7 @@ import HashViewer from 'components/HashViewer'
 import { alignments } from 'constants/attributes'
 import {
 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
-	INSPIRATION, PROF_BONUS,
+	INSPIRATION, PROF_BONUS, PAS_WIS,
 } from 'constants/schema'
 
 import profBonus from 'util/profBonus'
@@ -87,6 +87,13 @@ const Home = () => {
 				<NumberInput
 					label="Proficiency Bonus"
 					formKey={PROF_BONUS}
+					formVals={formVals}
+					min={0}
+					readOnly
+				/>
+				<NumberInput
+					label="Passive Perception"
+					formKey={PAS_WIS}
 					formVals={formVals}
 					min={0}
 					readOnly

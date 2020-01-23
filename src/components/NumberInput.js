@@ -1,7 +1,7 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
 
-import Label from 'components/Label'
+import Input from 'components/Input'
 
 const useStyles = createUseStyles({
 	input: {
@@ -10,24 +10,20 @@ const useStyles = createUseStyles({
 })
 
 export default ({
-	setFormVals, formVals, formKey, label,
+	setFormVals, formVals, formPath, label,
 	min, max, readOnly,
 }) => {
 	const classes = useStyles()
-	const onChange = (e) => setFormVals({ ...formVals, [formKey]: e.target.value })
-
 	return (
-		<Label label={label}>
-			<input
-				type="number"
-				min={min}
-				max={max}
-				className={classes.textInput}
-				name={formKey}
-				value={formVals[formKey]}
-				onChange={onChange}
-				readOnly={readOnly}
-			/>
-		</Label>
+		<Input
+			type="number"
+			min={min}
+			max={max}
+			readOnly={readOnly}
+			formVals={formVals}
+			formPath={formPath}
+			setFormVals={setFormVals}
+			label={label}
+		/>
 	)
 }

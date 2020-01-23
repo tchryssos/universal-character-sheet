@@ -1,8 +1,9 @@
 import React from 'react'
-import { createUseStyles } from 'react-jss'
+import clsx from 'clsx'
 import assocPath from 'ramda/src/assocPath'
 import path from 'ramda/src/path'
 import join from 'ramda/src/join'
+import { createUseStyles } from 'react-jss'
 
 import Label from 'components/Label'
 
@@ -10,40 +11,30 @@ const useStyles = createUseStyles({
 	input: {
 
 	},
-	option: {
-		textTransform: 'uppercase',
-	},
 })
 
-const Options = ({ options, classes }) => options.map(
-	(option) => (
-		<option
-			className={classes.option}
-			value={option}
-			key={option}
-		>
-			{option}
-		</option>
-	),
-)
-
 export default ({
-	setFormVals, formVals, formPath = [], label, options,
+	setFormVals, formVals, formPath = [], label,
+	min, max, readOnly, type, className,
 }) => {
 	const classes = useStyles()
 	const onChange = (e) => setFormVals(assocPath(formPath, e.target.value, formVals))
 
 	return (
 		<Label label={label}>
-			<select
-				className={classes.textInput}
+			<input
+				type={type}
+				min={min}
+				max={max}
+				className={clsx(
+					classes.input,
+					className,
+				)}
 				name={join('-', formPath)}
 				value={path(formPath, formVals)}
 				onChange={onChange}
-			>
-				<option value="default" disabled>-- Choose One --</option>
-				<Options options={options} classes={classes} />
-			</select>
+				readOnly={readOnly}
+			/>
 		</Label>
 	)
 }

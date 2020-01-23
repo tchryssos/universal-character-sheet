@@ -1,6 +1,5 @@
 import {
 	STR, DEX, CON, WIS, INT, CHA,
-	STR_SAVE, DEX_SAVE, CON_SAVE, WIS_SAVE, INT_SAVE, CHA_SAVE,
 } from 'constants/schema'
 
 export const alignments = [
@@ -18,12 +17,3 @@ export const alignments = [
 export const attributes = [
 	STR, DEX, CON, WIS, INT, CHA,
 ]
-
-export const saves = {
-	[STR]: STR_SAVE,
-	[DEX]: DEX_SAVE,
-	[CON]: CON_SAVE,
-	[WIS]: WIS_SAVE,
-	[INT]: INT_SAVE,
-	[CHA]: CHA_SAVE,
-}
