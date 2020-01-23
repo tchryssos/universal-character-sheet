@@ -5,8 +5,9 @@ import clsx from 'clsx'
 import modCalc from 'util/modCalc'
 
 import NumberInput from 'components/NumberInput'
+import CheckboxInput from 'components/CheckboxInput'
 
-import { attributes } from 'constants/attributes'
+import { attributes, saves } from 'constants/attributes'
 import { shadow, white } from 'constants/styles/colors'
 import { fontSizeMd } from 'constants/styles/text'
 
@@ -39,6 +40,7 @@ const useStyles = createUseStyles({
 		width: '10%',
 		display: 'flex',
 		justifyContent: 'center',
+		alginItems: 'center',
 	},
 })
 
@@ -58,9 +60,8 @@ const TableHeader = ({ classes }) => (
 
 const AttrRows = ({ formVals, setFormVals, classes }) => attributes.map(
 	(attribute) => {
-		const onChange = (e) => setFormVals({ ...formVals, [attribute]: e.target.value })
 		const formAttribute = formVals[attribute]
-		const attributeScore = (formAttribute || formAttribute === 0) ? formAttribute : 10
+		const attributeScore = (formAttribute || formAttribute === 0) ? formAttribute : 1
 		return (
 			<div className={classes.tableRow} key={attribute}>
 				<div className={classes.nameBox}>{attribute}</div>
@@ -69,13 +70,19 @@ const AttrRows = ({ formVals, setFormVals, classes }) => attributes.map(
 						min={0}
 						max={30}
 						formKey={attribute}
-						onChange={onChange}
 						formVals={formVals}
 						setFormVals={setFormVals}
 					/>
 				</div>
 				<div className={classes.numberBox}>
 					{modCalc(attributeScore)}
+				</div>
+				<div className={classes.saveBox}>
+					<CheckboxInput
+						formKey={saves[attribute]}
+						formVals={formVals}
+						setFormVals={setFormVals}
+					/>
 				</div>
 			</div>
 		)
