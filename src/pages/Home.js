@@ -48,19 +48,19 @@ const Home = () => {
 			<form className={classes.form}>
 				<TextInput
 					label="Character Name"
-					formKey={CHAR_NAME}
+					formPath={[CHAR_NAME]}
 					setFormVals={setFormVals}
 					formVals={formVals}
 				/>
 				<TextInput
 					label="Character Class"
-					formKey={CHAR_CLASS}
+					formPath={[CHAR_CLASS]}
 					setFormVals={setFormVals}
 					formVals={formVals}
 				/>
 				<NumberInput
 					label="Level"
-					formKey={LEVEL}
+					formPath={[LEVEL]}
 					setFormVals={setFormVals}
 					formVals={formVals}
 					min={1}
@@ -68,7 +68,7 @@ const Home = () => {
 				/>
 				<SelectInput
 					label="Alignment"
-					formKey={ALIGNMENT}
+					formPath={[ALIGNMENT]}
 					setFormVals={setFormVals}
 					formVals={formVals}
 					options={alignments}
@@ -79,21 +79,21 @@ const Home = () => {
 				/>
 				<NumberInput
 					label="Inpsiration"
-					formKey={INSPIRATION}
+					formPath={[INSPIRATION]}
 					setFormVals={setFormVals}
 					formVals={formVals}
 					min={0}
 				/>
 				<NumberInput
 					label="Proficiency Bonus"
-					formKey={PROF_BONUS}
+					formPath={[PROF_BONUS]}
 					formVals={formVals}
 					min={0}
 					readOnly
 				/>
 				<NumberInput
 					label="Passive Perception"
-					formKey={PAS_WIS}
+					formPath={[PAS_WIS]}
 					formVals={formVals}
 					min={0}
 					readOnly
