@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { createUseStyles } from 'react-jss'
+import prop from 'ramda/src/prop'
+import assoc from 'ramda/src/assoc'
 
 import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
@@ -10,7 +12,7 @@ import HashViewer from 'components/HashViewer'
 import { alignments } from 'constants/attributes'
 import {
 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
-	INSPIRATION, PROF_BONUS, PAS_WIS,
+	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
 } from 'constants/schema'
 
 import profBonus from 'util/profBonus'
@@ -32,16 +34,31 @@ const Home = () => {
 	const classes = useStyles()
 	const [formVals, setFormVals] = useState(schema)
 
+	const level = prop(LEVEL, formVals)
+	const wisdom = prop(WIS, formVals)
+
 	// On each form field change, update the encoded string
 	const json = JSON.stringify(formVals)
 	const hash = window.btoa(json)
 
+	// START - EFFECTS - START
 	useEffect(() => { // Set proficiency bonus based on level
-		setFormVals({
-			...formVals,
-			[PROF_BONUS]: profBonus(formVals[LEVEL]),
-		})
-	}, [formVals[LEVEL]])
+		setFormVals(assoc(
+			PROF_BONUS,
+			profBonus(level),
+			formVals,
+		))
+	}, [level])
+
+	useEffect(() => { // Set passive wisdom based on mod and prof bonus
+		const profMod = prop(PROF, wisdom) ? 5 : 0
+		setFormVals(assoc(
+			PAS_WIS,
+			10 + prop(MOD, wisdom) + profMod,
+			formVals,
+		))
+	}, [prop(MOD, wisdom), prop(PROF, wisdom)])
+	// END - EFFECTS - END
 
 	return (
 		<div className={classes.wrapper}>
