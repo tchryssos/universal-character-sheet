@@ -59,7 +59,7 @@ const TableHeader = ({ classes }) => (
 		<div className={classes.nameBox} />
 		<div className={classes.numberBox}>SCORE</div>
 		<div className={classes.numberBox}>MOD</div>
-		<div className={classes.saveBox}>Save</div>
+		<div className={classes.saveBox}>PROF</div>
 	</div>
 )
 
