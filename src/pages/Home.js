@@ -15,7 +15,8 @@ import {
 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
 } from 'constants/schema'
 
-import profBonus from 'util/profBonus'
+import profBonusCalc from 'util/profBonusCalc'
+import SheetContext from '../contexts/sheetContext'
 
 const useStyles = createUseStyles({
 	wrapper: {
@@ -36,6 +37,7 @@ const Home = () => {
 
 	const level = prop(LEVEL, formVals)
 	const wisdom = prop(WIS, formVals)
+	const profBonus = prop(PROF_BONUS, formVals)
 
 	// On each form field change, update the encoded string
 	const json = JSON.stringify(formVals)
@@ -45,79 +47,66 @@ const Home = () => {
 	useEffect(() => { // Set proficiency bonus based on level
 		setFormVals(assoc(
 			PROF_BONUS,
-			profBonus(level),
+			profBonusCalc(level),
 			formVals,
 		))
 	}, [level])
 
 	useEffect(() => { // Set passive wisdom based on mod and prof bonus
-		const profMod = prop(PROF, wisdom) ? 5 : 0
+		const profMod = prop(PROF, wisdom) ? profBonus : 0
 		setFormVals(assoc(
 			PAS_WIS,
 			10 + prop(MOD, wisdom) + profMod,
 			formVals,
 		))
-	}, [prop(MOD, wisdom), prop(PROF, wisdom)])
+	}, [prop(MOD, wisdom), prop(PROF, wisdom), profBonus])
 	// END - EFFECTS - END
 
 	return (
-		<div className={classes.wrapper}>
-			<form className={classes.form}>
-				<TextInput
-					label="Character Name"
-					formPath={[CHAR_NAME]}
-					setFormVals={setFormVals}
-					formVals={formVals}
-				/>
-				<TextInput
-					label="Character Class"
-					formPath={[CHAR_CLASS]}
-					setFormVals={setFormVals}
-					formVals={formVals}
-				/>
-				<NumberInput
-					label="Level"
-					formPath={[LEVEL]}
-					setFormVals={setFormVals}
-					formVals={formVals}
-					min={1}
-					max={20}
-				/>
-				<SelectInput
-					label="Alignment"
-					formPath={[ALIGNMENT]}
-					setFormVals={setFormVals}
-					formVals={formVals}
-					options={alignments}
-				/>
-				<AbilityScores
-					setFormVals={setFormVals}
-					formVals={formVals}
-				/>
-				<NumberInput
-					label="Inpsiration"
-					formPath={[INSPIRATION]}
-					setFormVals={setFormVals}
-					formVals={formVals}
-					min={0}
-				/>
-				<NumberInput
-					label="Proficiency Bonus"
-					formPath={[PROF_BONUS]}
-					formVals={formVals}
-					min={0}
-					readOnly
-				/>
-				<NumberInput
-					label="Passive Perception"
-					formPath={[PAS_WIS]}
-					formVals={formVals}
-					min={0}
-					readOnly
-				/>
-			</form>
-			<HashViewer string={hash} />
-		</div>
+		<SheetContext.Provider value={{ ...formVals, setFormVals }}>
+			<div className={classes.wrapper}>
+				<form className={classes.form}>
+					<TextInput
+						label="Character Name"
+						formPath={[CHAR_NAME]}
+					/>
+					<TextInput
+						label="Character Class"
+						formPath={[CHAR_CLASS]}
+					/>
+					<NumberInput
+						label="Level"
+						formPath={[LEVEL]}
+						min={1}
+						max={20}
+					/>
+					<SelectInput
+						label="Alignment"
+						formPath={[ALIGNMENT]}
+						options={alignments}
+					/>
+					<AbilityScores />
+					<NumberInput
+						label="Inpsiration"
+						formPath={[INSPIRATION]}
+						min={0}
+					/>
+					<NumberInput
+						label="Proficiency Bonus"
+						formPath={[PROF_BONUS]}
+						min={0}
+						readOnly
+					/>
+					<NumberInput
+						label="Passive Perception"
+						formPath={[PAS_WIS]}
+						min={0}
+						readOnly
+					/>
+				</form>
+				<HashViewer string={hash} />
+			</div>
+		</SheetContext.Provider>
 	)
 }
 

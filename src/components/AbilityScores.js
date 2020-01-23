@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { createUseStyles } from 'react-jss'
 import path from 'ramda/src/path'
 import assocPath from 'ramda/src/assocPath'
+import prop from 'ramda/src/prop'
 import clsx from 'clsx'
 
+import SheetContext from 'contexts/sheetContext'
 import modCalc from 'util/modCalc'
 
 import NumberInput from 'components/NumberInput'
@@ -61,59 +63,54 @@ const TableHeader = ({ classes }) => (
 	</div>
 )
 
-const AttrRows = ({ formVals, setFormVals, classes }) => attributes.map(
-	(attribute) => {
-		useEffect(() => { // On ability value change, update ability mod
-			setFormVals(assocPath(
-				[attribute, MOD],
-				modCalc(path([attribute, VAL], formVals)),
-				formVals,
-			))
-		}, [path([attribute, VAL], formVals)])
+const AttrRows = ({ classes }) => {
+	const formVals = useContext(SheetContext)
+	const setFormVals = prop('setFormVals', formVals)
+	return attributes.map(
+		(attribute) => {
+			useEffect(() => { // On ability value change, update ability mod
+				setFormVals(assocPath(
+					[attribute, MOD],
+					modCalc(path([attribute, VAL], formVals)),
+					formVals,
+				))
+			}, [path([attribute, VAL], formVals)])
 
-		return (
-			<div className={classes.tableRow} key={attribute}>
-				<div className={classes.nameBox}>{attribute}</div>
-				<div className={classes.numberBox}>
-					<NumberInput
-						min={0}
-						max={30}
-						formPath={[attribute, VAL]}
-						formVals={formVals}
-						setFormVals={setFormVals}
-					/>
+			return (
+				<div className={classes.tableRow} key={attribute}>
+					<div className={classes.nameBox}>{attribute}</div>
+					<div className={classes.numberBox}>
+						<NumberInput
+							min={0}
+							max={30}
+							formPath={[attribute, VAL]}
+						/>
+					</div>
+					<div className={classes.numberBox}>
+						<NumberInput
+							min={-5}
+							max={10}
+							readOnly
+							formPath={[attribute, MOD]}
+						/>
+					</div>
+					<div className={classes.saveBox}>
+						<CheckboxInput
+							formPath={[attribute, PROF]}
+						/>
+					</div>
 				</div>
-				<div className={classes.numberBox}>
-					<NumberInput
-						min={-5}
-						max={10}
-						readOnly
-						formPath={[attribute, MOD]}
-						formVals={formVals}
-					/>
-				</div>
-				<div className={classes.saveBox}>
-					<CheckboxInput
-						formPath={[attribute, PROF]}
-						formVals={formVals}
-						setFormVals={setFormVals}
-					/>
-				</div>
-			</div>
-		)
-	},
-)
+			)
+		},
+	)
+}
 
-export default ({ formVals, setFormVals }) => {
+export default () => {
 	const classes = useStyles()
 	return (
 		<div className={classes.tableWrapper}>
 			<TableHeader classes={classes} />
-			<AttrRows
-				formVals={formVals}
-				setFormVals={setFormVals}
-				classes={classes}
-			/>
+			<AttrRows classes={classes} />
 		</div>
 	)
 }
