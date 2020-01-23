@@ -14,6 +14,8 @@ export const CON_SAVE = 'conSave'
 export const WIS_SAVE = 'wisSave'
 export const INT_SAVE = 'intSave'
 export const CHA_SAVE = 'chaSave'
+export const INSPIRATION = 'inspiration'
+export const PROF_BONUS = 'profBonus'
 
 export const schema = {
 	[CHAR_NAME]: '',
@@ -32,4 +34,6 @@ export const schema = {
 	[WIS_SAVE]: false,
 	[INT_SAVE]: false,
 	[CHA_SAVE]: false,
+	[INSPIRATION]: '',
+	[PROF_BONUS]: '',
 }

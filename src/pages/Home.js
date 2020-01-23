@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { createUseStyles } from 'react-jss'
 
 import TextInput from 'components/TextInput'
@@ -9,8 +9,11 @@ import HashViewer from 'components/HashViewer'
 
 import { alignments } from 'constants/attributes'
 import {
-	CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT, schema,
+	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
+	INSPIRATION, PROF_BONUS,
 } from 'constants/schema'
+
+import profBonus from 'util/profBonus'
 
 const useStyles = createUseStyles({
 	wrapper: {
@@ -32,6 +35,13 @@ const Home = () => {
 	// On each form field change, update the encoded string
 	const json = JSON.stringify(formVals)
 	const hash = window.btoa(json)
+
+	useEffect(() => { // Set proficiency bonus based on level
+		setFormVals({
+			...formVals,
+			[PROF_BONUS]: profBonus(formVals[LEVEL]),
+		})
+	}, [formVals[LEVEL]])
 
 	return (
 		<div className={classes.wrapper}>
@@ -66,6 +76,20 @@ const Home = () => {
 				<AbilityScores
 					setFormVals={setFormVals}
 					formVals={formVals}
+				/>
+				<NumberInput
+					label="Inpsiration"
+					formKey={INSPIRATION}
+					setFormVals={setFormVals}
+					formVals={formVals}
+					min={0}
+				/>
+				<NumberInput
+					label="Proficiency Bonus"
+					formKey={PROF_BONUS}
+					formVals={formVals}
+					min={0}
+					readOnly
 				/>
 			</form>
 			<HashViewer string={hash} />

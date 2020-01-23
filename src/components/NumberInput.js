@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
 
 export default ({
 	setFormVals, formVals, formKey, label,
-	min, max,
+	min, max, readOnly,
 }) => {
 	const classes = useStyles()
 	const onChange = (e) => setFormVals({ ...formVals, [formKey]: e.target.value })
@@ -26,6 +26,7 @@ export default ({
 				name={formKey}
 				value={formVals[formKey]}
 				onChange={onChange}
+				readOnly={readOnly}
 			/>
 		</Label>
 	)
