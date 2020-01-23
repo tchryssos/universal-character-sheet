@@ -3,6 +3,9 @@ import { createUseStyles } from 'react-jss'
 import prop from 'ramda/src/prop'
 import assoc from 'ramda/src/assoc'
 
+import SheetContext from 'contexts/sheetContext'
+import setProfBonus from 'effects/setProfBonus'
+
 import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
 import SelectInput from 'components/SelectInput'
@@ -14,9 +17,6 @@ import {
 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
 } from 'constants/schema'
-
-import profBonusCalc from 'util/profBonusCalc'
-import SheetContext from '../contexts/sheetContext'
 
 const useStyles = createUseStyles({
 	wrapper: {
@@ -44,15 +44,9 @@ const Home = () => {
 	const hash = window.btoa(json)
 
 	// START - EFFECTS - START
-	useEffect(() => { // Set proficiency bonus based on level
-		setFormVals(assoc(
-			PROF_BONUS,
-			profBonusCalc(level),
-			formVals,
-		))
-	}, [level])
+	setProfBonus(formVals, setFormVals, level) // Set proficiency bonus based on level
 
-	useEffect(() => { // Set passive wisdom based on mod and prof bonus
+	useEffect(() => { // Set passive wisdom based on mod, prof bonus, and prof
 		const profMod = prop(PROF, wisdom) ? profBonus : 0
 		setFormVals(assoc(
 			PAS_WIS,
