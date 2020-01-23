@@ -18,7 +18,10 @@ export default ({
 	min, max, readOnly, type, className,
 }) => {
 	const classes = useStyles()
-	const onChange = (e) => setFormVals(assocPath(formPath, e.target.value, formVals))
+	const onChange = (e) => {
+		const value = type === 'checkbox' ? 'checked' : 'value'
+		setFormVals(assocPath(formPath, e.target[value], formVals))
+	}
 
 	return (
 		<Label label={label}>

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createUseStyles } from 'react-jss'
+import path from 'ramda/src/path'
+import assocPath from 'ramda/src/assocPath'
 import clsx from 'clsx'
 
 import modCalc from 'util/modCalc'
@@ -61,6 +63,14 @@ const TableHeader = ({ classes }) => (
 
 const AttrRows = ({ formVals, setFormVals, classes }) => attributes.map(
 	(attribute) => {
+		useEffect(() => { // On ability value change, update ability mod
+			setFormVals(assocPath(
+				[attribute, MOD],
+				modCalc(path([attribute, VAL], formVals)),
+				formVals,
+			))
+		}, [path([attribute, VAL], formVals)])
+
 		return (
 			<div className={classes.tableRow} key={attribute}>
 				<div className={classes.nameBox}>{attribute}</div>
