@@ -29,20 +29,23 @@ export default ({
 	}
 
 	return (
-		<Label label={label}>
-			<input
-				type={type}
-				min={min}
-				max={max}
-				className={clsx(
-					classes.input,
-					className,
-				)}
-				name={join('-', formPath)}
-				value={path(formPath, formVals)}
-				onChange={onChange}
-				readOnly={readOnly}
-			/>
-		</Label>
+		<div className={classes.inputWrapper}>
+			<Label label={label}>
+				<input
+					type={type}
+					min={min}
+					max={max}
+					className={clsx(
+						classes.input,
+						className,
+					)}
+					name={join('-', formPath)}
+					value={path(formPath, formVals)}
+					onChange={onChange}
+					readOnly={readOnly}
+				/>
+			</Label>
+		</div>
+
 	)
 }

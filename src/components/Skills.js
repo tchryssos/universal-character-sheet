@@ -23,6 +23,7 @@ const useStyles = createUseStyles({
 	},
 	skillRow: {
 		display: 'flex',
+		alignItems: 'center',
 	},
 	nameBox: {
 		flex: 1,
@@ -53,7 +54,7 @@ export default () => {
 
 	return (
 		<div className={classes.skillsWrapper}>
-			<Label key="skills" label="Skills">
+			<Label key="skills" label="Skills" column>
 				<div className={classes.table}>
 					{
 						map(

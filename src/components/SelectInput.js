@@ -9,8 +9,8 @@ import SheetContext from 'contexts/sheetContext'
 import Label from 'components/Label'
 
 const useStyles = createUseStyles({
-	input: {
-
+	selectWrapper: {
+		marginBottom: 8,
 	},
 	option: {
 		textTransform: 'uppercase',
@@ -38,16 +38,19 @@ export default ({
 	const onChange = (e) => setFormVals(assocPath(formPath, e.target.value, formVals))
 
 	return (
-		<Label label={label}>
-			<select
-				className={classes.textInput}
-				name={join('-', formPath)}
-				value={path(formPath, formVals)}
-				onChange={onChange}
-			>
-				<option value="default" disabled>-- Choose One --</option>
-				<Options options={options} classes={classes} />
-			</select>
-		</Label>
+		<div className={classes.selectWrapper}>
+			<Label label={label}>
+				<select
+					className={classes.textInput}
+					name={join('-', formPath)}
+					value={path(formPath, formVals)}
+					onChange={onChange}
+				>
+					<option value="default" disabled>-- Choose One --</option>
+					<Options options={options} classes={classes} />
+				</select>
+			</Label>
+		</div>
+
 	)
 }

@@ -25,6 +25,7 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		alignItems: 'center',
 		textAlign: 'center',
+		marginTop: 8,
 	},
 	tableHeader: {
 		backgroundColor: shadow,
@@ -35,11 +36,14 @@ const useStyles = createUseStyles({
 		width: '40%',
 		height: fontSizeMd,
 		textTransform: 'uppercase',
+		display: 'flex',
+		alignItems: 'center',
 	},
 	numberBox: {
 		width: '25%',
 		display: 'flex',
 		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	saveBox: {
 		width: '10%',
