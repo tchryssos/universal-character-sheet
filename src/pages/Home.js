@@ -10,6 +10,7 @@ import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
 import SelectInput from 'components/SelectInput'
 import AbilityScores from 'components/AbilityScores'
+import Skills from 'components/Skills'
 import HashViewer from 'components/HashViewer'
 
 import { alignments } from 'constants/attributes'
@@ -97,6 +98,7 @@ const Home = () => {
 						min={0}
 						readOnly
 					/>
+					<Skills />
 				</form>
 				<HashViewer string={hash} />
 			</div>

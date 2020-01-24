@@ -17,7 +17,6 @@ export default ({ label, key, children }) => {
 			<label htmlFor={key} className={classes.label}>
 				<p className={classes.labelText}>
 					{label}
-					:
 				</p>
 				{children}
 			</label>

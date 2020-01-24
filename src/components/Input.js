@@ -12,7 +12,7 @@ import Label from 'components/Label'
 
 const useStyles = createUseStyles({
 	input: {
-
+		padding: 4,
 	},
 })
 
