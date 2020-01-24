@@ -1,14 +1,12 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { createUseStyles } from 'react-jss'
-import prop from 'ramda/src/prop'
 import map from 'ramda/src/map'
 import path from 'ramda/src/path'
-import assocPath from 'ramda/src/assocPath'
 
 import SheetContext from 'contexts/sheetContext'
 import { skills } from 'constants/attributes'
 import {
-	VAL, PROF, ABILITY, MOD,
+	PROF, ABILITY, MOD,
 } from 'constants/schema'
 
 import NumberInput from 'components/NumberInput'
@@ -35,26 +33,23 @@ const useStyles = createUseStyles({
 
 const SkillRow = ({
 	skill, formVals, classes,
-}) => {
-	return (
-		<div className={classes.skillRow}>
-			<div className={classes.nameBox}>{skill}</div>
-			<NumberInput
-				readOnly
-				min={-5}
-				formPath={[path([skill, ABILITY], formVals), MOD]}
-			/>
-			<CheckboxInput
-				formPath={[skill, PROF]}
-			/>
-		</div>
-	)
-}
+}) => (
+	<div className={classes.skillRow}>
+		<div className={classes.nameBox}>{skill}</div>
+		<NumberInput
+			readOnly
+			min={-5}
+			formPath={[path([skill, ABILITY], formVals), MOD]}
+		/>
+		<CheckboxInput
+			formPath={[skill, PROF]}
+		/>
+	</div>
+)
 
 export default () => {
 	const classes = useStyles()
 	const formVals = useContext(SheetContext)
-	const setFormVals = prop('setFormVals', formVals)
 
 	return (
 		<div className={classes.skillsWrapper}>
@@ -67,7 +62,6 @@ export default () => {
 									key={skill}
 									skill={skill}
 									formVals={formVals}
-									setFormVals={setFormVals}
 									classes={classes}
 								/>
 							), skills,

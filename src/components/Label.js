@@ -6,6 +6,7 @@ const useStyles = createUseStyles({
 		display: 'flex',
 	},
 	labelText: {
+		fontWeight: 'bold',
 		marginRight: 8,
 	},
 })

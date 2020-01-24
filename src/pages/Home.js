@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { createUseStyles } from 'react-jss'
 import prop from 'ramda/src/prop'
+import propOr from 'ramda/src/propOr'
 import assoc from 'ramda/src/assoc'
 
 import SheetContext from 'contexts/sheetContext'
@@ -49,9 +50,10 @@ const Home = () => {
 
 	useEffect(() => { // Set passive wisdom based on mod, prof bonus, and prof
 		const profMod = prop(PROF, wisdom) ? profBonus : 0
+		const wisBonus = prop(MOD, wisdom) || 0
 		setFormVals(assoc(
 			PAS_WIS,
-			10 + prop(MOD, wisdom) + profMod,
+			10 + wisBonus + profMod,
 			formVals,
 		))
 	}, [prop(MOD, wisdom), prop(PROF, wisdom), profBonus])
