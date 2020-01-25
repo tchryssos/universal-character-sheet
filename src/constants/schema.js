@@ -12,7 +12,7 @@ export const WIS = 'wis'
 export const INT = 'int'
 export const CHA = 'cha'
 
-// MISC
+// MISC GAME
 export const INSPIRATION = 'inspiration'
 export const PROF_BONUS = 'profBonus'
 export const PAS_WIS = 'pasWis'
@@ -37,6 +37,12 @@ export const SLEIGHT_OF_HAND = 'sleightOfHand'
 export const STEALTH = 'stealth'
 export const SURVIVAL = 'survival'
 
+// COMBAT STATS
+export const AC = 'ac'
+export const INITIATIVE = 'initiative'
+export const SPEED = 'speed'
+export const HIT_POINTS = 'hitPoints'
+
 // MODIFIERS
 export const VAL = 'val'
 export const MOD = 'mod'
@@ -44,43 +50,49 @@ export const PROF = 'prof'
 export const ABILITY = 'ability'
 
 export const schema = {
+	// BIOGRAPHICAL
 	[CHAR_NAME]: '',
 	[CHAR_CLASS]: '',
-	[LEVEL]: '',
+	[LEVEL]: 1,
 	[ALIGNMENT]: 'default',
+
+	// ABILITIES
 	[STR]: {
-		[VAL]: '',
-		[MOD]: '',
+		[VAL]: 10,
+		[MOD]: 0,
 		[PROF]: false,
 	},
 	[DEX]: {
-		[VAL]: '',
-		[MOD]: '',
+		[VAL]: 10,
+		[MOD]: 0,
 		[PROF]: false,
 	},
 	[CON]: {
-		[VAL]: '',
-		[MOD]: '',
+		[VAL]: 10,
+		[MOD]: 0,
 		[PROF]: false,
 	},
 	[WIS]: {
-		[VAL]: '',
-		[MOD]: '',
+		[VAL]: 10,
+		[MOD]: 0,
 		[PROF]: false,
 	},
 	[INT]: {
-		[VAL]: '',
-		[MOD]: '',
+		[VAL]: 10,
+		[MOD]: 0,
 		[PROF]: false,
 	},
 	[CHA]: {
-		[VAL]: '',
-		[MOD]: '',
+		[VAL]: 10,
+		[MOD]: 0,
 		[PROF]: false,
 	},
-	[INSPIRATION]: '',
-	[PROF_BONUS]: '',
-	[PAS_WIS]: '',
+	// MISC GAME
+	[INSPIRATION]: 0,
+	[PROF_BONUS]: 2,
+	[PAS_WIS]: 10,
+
+	// SKILLS
 	[ACROBATICS]: {
 		[ABILITY]: DEX,
 		[PROF]: false,
@@ -153,4 +165,10 @@ export const schema = {
 		[ABILITY]: WIS,
 		[PROF]: false,
 	},
+
+	// COMBAT STATS
+	[AC]: 10,
+	[INITIATIVE]: 0,
+	[SPEED]: 30,
+	[HIT_POINTS]: 1,
 }
