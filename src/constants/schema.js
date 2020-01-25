@@ -41,7 +41,9 @@ export const SURVIVAL = 'survival'
 export const AC = 'ac'
 export const INITIATIVE = 'initiative'
 export const SPEED = 'speed'
-export const HIT_POINTS = 'hitPoints'
+export const MAX_HIT_POINTS = 'maxHitPoints'
+export const CURRENT_HIT_POINTS = 'currentHitPoints'
+export const TEMP_HIT_POINTS = 'tempHitPoints'
 
 // MODIFIERS
 export const VAL = 'val'
@@ -170,5 +172,8 @@ export const schema = {
 	[AC]: 10,
 	[INITIATIVE]: 0,
 	[SPEED]: 30,
-	[HIT_POINTS]: 1,
+	[MAX_HIT_POINTS]: 1,
+	[CURRENT_HIT_POINTS]: 1,
+	[TEMP_HIT_POINTS]: 0,
+
 }
