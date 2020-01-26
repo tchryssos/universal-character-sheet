@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
 
 export default ({
 	formPath = [], label, min, max,
-	readOnly, type, className,
+	readOnly, type, labelColumn, className,
 }) => {
 	const classes = useStyles()
 	const formVals = useContext(SheetContext)
@@ -30,7 +30,7 @@ export default ({
 
 	return (
 		<div className={classes.inputWrapper}>
-			<Label label={label}>
+			<Label label={label} column={labelColumn}>
 				<input
 					type={type}
 					min={min}

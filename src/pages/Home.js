@@ -12,12 +12,17 @@ import NumberInput from 'components/NumberInput'
 import SelectInput from 'components/SelectInput'
 import AbilityScores from 'components/AbilityScores'
 import Skills from 'components/Skills'
+import IconStat from 'components/IconStat'
 import HashViewer from 'components/HashViewer'
+
+import Heart from 'static/svg/heart.svg'
+import Shield from 'static/svg/shield.svg'
 
 import { alignments } from 'constants/attributes'
 import {
 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
+	AC, CURRENT_HIT_POINTS,
 } from 'constants/schema'
 
 const useStyles = createUseStyles({
@@ -101,6 +106,12 @@ const Home = () => {
 						readOnly
 					/>
 					<Skills />
+					<IconStat
+						label="AC"
+						icon={Shield}
+						min={0}
+						formPath={[AC]}
+					/>
 				</form>
 				<HashViewer string={hash} />
 			</div>

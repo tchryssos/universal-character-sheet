@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
 
 export default ({
 	setFormVals, formVals, formPath, label,
-	min, max, readOnly,
+	min, max, readOnly, labelColumn,
 }) => {
 	const classes = useStyles()
 	return (
@@ -24,6 +24,7 @@ export default ({
 			formPath={formPath}
 			setFormVals={setFormVals}
 			label={label}
+			labelColumn={labelColumn}
 		/>
 	)
 }
