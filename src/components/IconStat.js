@@ -6,18 +6,12 @@ import NumberInput from 'components/NumberInput'
 const useStyles = createUseStyles({
 	iconStatWrapper: {
 		position: 'relative',
-		height: 64,
-		width: 64,
 		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'center',
 	},
 	icon: {
-		position: 'absolute',
-		height: '100%',
-		width: '100%',
-		top: 0,
-		left: 0,
+		height: 32,
+		width: 32,
 	},
 })
 
@@ -30,13 +24,13 @@ export default ({
 			<img
 				src={icon}
 				className={classes.icon}
+				alt={label}
 			/>
 			<NumberInput
 				formPath={formPath}
 				min={min}
 				max={max}
 				label={label}
-				labelColumn
 			/>
 		</div>
 	)

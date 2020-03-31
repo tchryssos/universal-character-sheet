@@ -44,6 +44,10 @@ export const SPEED = 'speed'
 export const MAX_HIT_POINTS = 'maxHitPoints'
 export const CURRENT_HIT_POINTS = 'currentHitPoints'
 export const TEMP_HIT_POINTS = 'tempHitPoints'
+export const HIT_DICE = 'hitDice'
+export const TOTAL_HIT_DICE = 'totalHitDice'
+export const SUCCESSFUL_DEATH_SAVES = 'successfulDeathSaves'
+export const FAILED_DEATH_SAVES = 'failedDeathSaves'
 
 // MODIFIERS
 export const VAL = 'val'
@@ -175,5 +179,14 @@ export const schema = {
 	[MAX_HIT_POINTS]: 1,
 	[CURRENT_HIT_POINTS]: 1,
 	[TEMP_HIT_POINTS]: 0,
-
+	[HIT_DICE]: 0,
+	[TOTAL_HIT_DICE]: '2d8',
+	[SUCCESSFUL_DEATH_SAVES]: {
+		total: 3,
+		saves: [],
+	},
+	[FAILED_DEATH_SAVES]: {
+		total: 3,
+		saves: [],
+	},
 }

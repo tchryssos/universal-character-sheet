@@ -5,6 +5,8 @@ import clsx from 'clsx'
 const useStyles = createUseStyles({
 	label: {
 		display: 'flex',
+		alignItems: 'center',
+		width: 'fit-content',
 	},
 	column: {
 		flexDirection: 'column',
@@ -14,9 +16,14 @@ const useStyles = createUseStyles({
 		fontWeight: 'bold',
 		marginRight: 8,
 	},
+	columnText: {
+		marginRight: 0,
+	},
 })
 
-export default ({ label, key, column, children }) => {
+export default ({
+	label, key, column, children,
+}) => {
 	const classes = useStyles()
 	if (label) {
 		return (
@@ -28,7 +35,12 @@ export default ({ label, key, column, children }) => {
 				)}
 
 			>
-				<p className={classes.labelText}>
+				<p
+					className={clsx(
+						classes.labelText,
+						{ [classes.columnText]: column },
+					)}
+				>
 					{label}
 				</p>
 				{children}

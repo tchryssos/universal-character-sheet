@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { createUseStyles } from 'react-jss'
 import prop from 'ramda/src/prop'
-import propOr from 'ramda/src/propOr'
 import assoc from 'ramda/src/assoc'
 
 import SheetContext from 'contexts/sheetContext'
@@ -13,16 +12,22 @@ import SelectInput from 'components/SelectInput'
 import AbilityScores from 'components/AbilityScores'
 import Skills from 'components/Skills'
 import IconStat from 'components/IconStat'
+import DeathSaves from 'components/DeathSaves'
 import HashViewer from 'components/HashViewer'
 
 import Heart from 'static/svg/heart.svg'
+import HalfHeart from 'static/svg/halfHeart.svg'
 import Shield from 'static/svg/shield.svg'
+import HeartStack from 'static/svg/heartStack.svg'
+import Run from 'static/svg/run.svg'
 
 import { alignments } from 'constants/attributes'
 import {
 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
-	AC, CURRENT_HIT_POINTS,
+	AC, CURRENT_HIT_POINTS, MAX_HIT_POINTS, TEMP_HIT_POINTS,
+	SPEED, TOTAL_HIT_DICE, HIT_DICE,
+
 } from 'constants/schema'
 
 const useStyles = createUseStyles({
@@ -112,6 +117,39 @@ const Home = () => {
 						min={0}
 						formPath={[AC]}
 					/>
+					<IconStat
+						label="Current HP"
+						icon={HalfHeart}
+						formPath={[CURRENT_HIT_POINTS]}
+					/>
+					<IconStat
+						label="Max HP"
+						icon={Heart}
+						formPath={[MAX_HIT_POINTS]}
+					/>
+					<IconStat
+						label="Temporary HP"
+						icon={HeartStack}
+						formPath={[TEMP_HIT_POINTS]}
+						min={0}
+					/>
+					<IconStat
+						label="Speed"
+						icon={Run}
+						formPath={[SPEED]}
+						min={0}
+					/>
+					<TextInput
+						label="Total Hit Dice"
+						formPath={[TOTAL_HIT_DICE]}
+
+					/>
+					<NumberInput
+						label="Remaining Hit Dice"
+						formPath={[HIT_DICE]}
+						min={0}
+					/>
+					<DeathSaves />
 				</form>
 				<HashViewer string={hash} />
 			</div>
