@@ -180,7 +180,7 @@ export const schema = {
 	[CURRENT_HIT_POINTS]: 1,
 	[TEMP_HIT_POINTS]: 0,
 	[HIT_DICE]: 0,
-	[TOTAL_HIT_DICE]: '2d8',
+	[TOTAL_HIT_DICE]: '1d8',
 	[SUCCESSFUL_DEATH_SAVES]: {
 		total: 3,
 		saves: [],

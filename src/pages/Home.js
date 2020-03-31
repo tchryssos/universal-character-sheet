@@ -4,7 +4,7 @@ import prop from 'ramda/src/prop'
 import assoc from 'ramda/src/assoc'
 
 import SheetContext from 'contexts/sheetContext'
-import setProfBonus from 'effects/setProfBonus'
+import levelUp from 'effects/levelUp'
 
 import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
@@ -56,7 +56,7 @@ const Home = () => {
 	const hash = window.btoa(json)
 
 	// START - EFFECTS - START
-	setProfBonus(formVals, setFormVals, level) // Set proficiency bonus based on level
+	levelUp(formVals, setFormVals, level) // Perform basic updates based on level
 
 	useEffect(() => { // Set passive wisdom based on mod, prof bonus, and prof
 		const profMod = prop(PROF, wisdom) ? profBonus : 0
