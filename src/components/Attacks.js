@@ -28,6 +28,7 @@ const useStyles = createUseStyles({
 	},
 	labelWrapper: {
 		display: 'flex',
+		paddingRight: 16,
 	},
 	attackHeader: {
 		flex: 1,
@@ -45,6 +46,11 @@ const useStyles = createUseStyles({
 	},
 	inputWrapper: {
 		marginRight: 4,
+	},
+	buttonWrapper: {
+		width: 20,
+		display: 'flex',
+		justifyContent: 'center',
 	},
 	removeButton: {
 		display: 'none',
@@ -84,11 +90,13 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 						formPath={[ATTACKS, index, 'damage']}
 					/>
 				</div>
-				<Button
-					label="x"
-					onClick={deleteAttack}
-					className={classes.removeButton}
-				/>
+				<div className={classes.buttonWrapper}>
+					<Button
+						label="x"
+						onClick={deleteAttack}
+						className={classes.removeButton}
+					/>
+				</div>
 			</div>
 		)
 	},

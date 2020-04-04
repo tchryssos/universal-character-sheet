@@ -5,7 +5,7 @@ import { black, white } from 'constants/styles/colors'
 
 const useStyles = createUseStyles({
 	body: {
-		fontSize: 16,
+		fontSize: 14,
 		color: black,
 	},
 	bold: {
