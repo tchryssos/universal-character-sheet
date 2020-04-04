@@ -3,6 +3,7 @@ import { createUseStyles } from 'react-jss'
 import prop from 'ramda/src/prop'
 import remove from 'ramda/src/remove'
 import assoc from 'ramda/src/assoc'
+import append from 'ramda/src/append'
 
 import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
@@ -14,6 +15,10 @@ import SheetContext from 'contexts/sheetContext'
 import { ATTACKS } from 'constants/schema'
 
 const useStyles = createUseStyles({
+	attacksWrapper: {
+		display: 'flex',
+		flexDirection: 'column',
+	},
 	attackRow: {
 		display: 'flex',
 		alignItems: 'center',
@@ -79,12 +84,33 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 export default () => {
 	const classes = useStyles()
 	const formVals = useContext(SheetContext)
+	const { setFormVals } = formVals
 	const attacks = prop(ATTACKS, formVals)
+
+	const addAttack = () => setFormVals(
+		assoc(
+			ATTACKS,
+			append(
+				{
+					name: '',
+					attackBonus: 0,
+					damage: '',
+				},
+				attacks,
+			),
+		),
+	)
 	return (
-		<MappedAttacks
-			attacks={attacks}
-			formVals={formVals}
-			classes={classes}
-		/>
+		<div className={classes.attacksWrapper}>
+			<MappedAttacks
+				attacks={attacks}
+				formVals={formVals}
+				classes={classes}
+			/>
+			<Button
+				onClick={addAttack}
+				label="+"
+			/>
+		</div>
 	)
 }
