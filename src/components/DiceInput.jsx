@@ -9,6 +9,10 @@ import { dice } from 'constants/attributes'
 const useStyles = createUseStyles({
 	diceInputWrapper: {
 		display: 'flex',
+		alignItems: 'center',
+	},
+	input: {
+		width: 48,
 	},
 })
 
@@ -19,10 +23,13 @@ export default ({ diceCountPath, diceTypePath }) => {
 			<NumberInput
 				formPath={diceCountPath}
 				min={1}
+				max={20}
+				className={classes.input}
 			/>
 			<SelectInput
 				formPath={diceTypePath}
 				options={dice}
+				className={classes.input}
 			/>
 		</div>
 	)

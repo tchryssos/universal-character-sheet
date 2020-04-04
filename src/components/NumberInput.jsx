@@ -4,7 +4,7 @@ import Input from 'components/Input'
 
 export default ({
 	setFormVals, formVals, formPath, label,
-	min, max, readOnly, labelColumn,
+	min, max, readOnly, labelColumn, className,
 }) => (
 	<Input
 		type="number"
@@ -16,5 +16,6 @@ export default ({
 		setFormVals={setFormVals}
 		label={label}
 		labelColumn={labelColumn}
+		className={className}
 	/>
 )

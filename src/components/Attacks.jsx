@@ -88,7 +88,7 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 				</div>
 				<div className={classes.inputWrapper}>
 					<DiceInput
-						diceCountPath={[ATTACKS, index, 'damaceDiceCount']}
+						diceCountPath={[ATTACKS, index, 'damageDiceCount']}
 						diceTypePath={[ATTACKS, index, 'damageDiceType']}
 					/>
 				</div>
