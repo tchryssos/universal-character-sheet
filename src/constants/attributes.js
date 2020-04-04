@@ -7,15 +7,42 @@ import {
 } from 'constants/schema'
 
 export const alignments = [
-	'Lawful Good',
-	'Neutral Good',
-	'Chaotic Good',
-	'Lawful Neutral',
-	'True Neutral',
-	'Chaotic Neutral',
-	'Lawful Evil',
-	'Neutral Evil',
-	'Chaotic Evil',
+	{
+		label: 'Lawful Good',
+		value: 'lawfulGood',
+	},
+	{
+		label: 'Neutral Good',
+		value: 'neutralGood',
+	},
+	{
+		label: 'Chaotic Good',
+		value: 'chaoticGood',
+	},
+	{
+		label: 'Lawful Neutral',
+		value: 'lawfulNeutral',
+	},
+	{
+		label: 'True Neutral',
+		value: 'trueNeutral',
+	},
+	{
+		label: 'Chaotic Neutral',
+		value: 'chaoticNeutral',
+	},
+	{
+		label: 'Lawful Evil',
+		value: 'lawfulEvil',
+	},
+	{
+		label: 'Neutral Evil',
+		value: 'neutralEvil',
+	},
+	{
+		label: 'Chaotic Evil',
+		value: 'chaoticEvil',
+	},
 ]
 
 export const attributes = [
@@ -27,4 +54,31 @@ export const skills = [
 	INSIGHT, INTIMIDATION, INVESTIGATION, MEDICINE, NATURE, 
 	PERCEPTION, PERFORMANCE, PERSUASION, RELIGION, SCIENCE,
 	SLEIGHT_OF_HAND, STEALTH, SURVIVAL,
+]
+
+export const dice = [
+	{
+		label: 'd4',
+		value: 4,
+	},
+	{
+		label: 'd6',
+		value: 6,
+	},
+	{
+		label: 'd8',
+		value: 8,
+	},
+	{
+		label: 'd10',
+		value: 10,
+	},
+	{
+		label: 'd12',
+		value: 12,
+	},
+	{
+		label: 'd20',
+		value: 20,
+	},
 ]

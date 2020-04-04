@@ -11,6 +11,7 @@ import NumberInput from 'components/NumberInput'
 import Button from 'components/Button'
 import Label from 'components/Label'
 import BodyText from 'components/BodyText'
+import DiceInput from 'components/DiceInput'
 
 import mapWithIndex from 'util/mapWithIndex'
 
@@ -86,8 +87,9 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 					/>
 				</div>
 				<div className={classes.inputWrapper}>
-					<TextInput
-						formPath={[ATTACKS, index, 'damage']}
+					<DiceInput
+						diceCountPath={[ATTACKS, index, 'damaceDiceCount']}
+						diceTypePath={[ATTACKS, index, 'damageDiceType']}
 					/>
 				</div>
 				<div className={classes.buttonWrapper}>
@@ -116,7 +118,9 @@ export default () => {
 				{
 					name: '',
 					attackBonus: 0,
-					damage: '',
+					damageDiceCount: 1,
+					damageDiceKind: 8,
+					damageType: '',
 				},
 				attacks,
 			),
