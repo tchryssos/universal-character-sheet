@@ -55,6 +55,9 @@ export const MOD = 'mod'
 export const PROF = 'prof'
 export const ABILITY = 'ability'
 
+// ATTACKS
+export const ATTACKS = 'attacks'
+
 export const schema = {
 	// BIOGRAPHICAL
 	[CHAR_NAME]: '',
@@ -189,4 +192,14 @@ export const schema = {
 		total: 3,
 		saves: [],
 	},
+
+	// ATTACKS
+	[ATTACKS]: [
+		{
+			name: '',
+			attackBonus: 0,
+			damage: '',
+		},
+	],
+
 }

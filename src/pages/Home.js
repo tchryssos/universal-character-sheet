@@ -13,6 +13,7 @@ import AbilityScores from 'components/AbilityScores'
 import Skills from 'components/Skills'
 import IconStat from 'components/IconStat'
 import DeathSaves from 'components/DeathSaves'
+import Attacks from 'components/Attacks'
 import HashViewer from 'components/HashViewer'
 
 import Heart from 'static/svg/heart.svg'
@@ -150,6 +151,7 @@ const Home = () => {
 						min={0}
 					/>
 					<DeathSaves />
+					<Attacks />
 				</form>
 				<HashViewer string={hash} />
 			</div>
