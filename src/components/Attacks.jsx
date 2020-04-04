@@ -119,7 +119,7 @@ export default () => {
 					name: '',
 					attackBonus: 0,
 					damageDiceCount: 1,
-					damageDiceKind: 8,
+					damageDiceType: 8,
 					damageType: '',
 				},
 				attacks,

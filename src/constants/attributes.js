@@ -45,6 +45,61 @@ export const alignments = [
 	},
 ]
 
+export const damageTypes = [
+	{
+		label: 'Acid',
+		value: 'acid',
+	},
+	{
+		label: 'Bludgeoning',
+		value: 'bludgeoning',
+	},
+	{
+		label: 'Cold',
+		value: 'cold',
+	},
+	{
+		label: 'Fire',
+		value: 'fire',
+	},
+	{
+		label: 'Force',
+		value: 'force',
+	},
+	{
+		label: 'Lightning',
+		value: 'lightning',
+	},
+	{
+		label: 'Necrotic',
+		value: 'necrotic',
+	},
+	{
+		label: 'Piercing',
+		value: 'piercing',
+	},
+	{
+		label: 'Poison',
+		value: 'poison',
+	},
+	{
+		label: 'Psychic',
+		value: 'psychic',
+	},
+	{
+		label: 'Radiant',
+		value: 'radiant',
+	},
+	{
+		label: 'Slashing',
+		value: 'slashing',
+	},
+	{
+		label: 'Thunder',
+		value: 'thunder',
+	},
+]
+
 export const attributes = [
 	STR, DEX, CON, WIS, INT, CHA,
 ]
