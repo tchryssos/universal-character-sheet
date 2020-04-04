@@ -10,6 +10,7 @@ import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
 import Button from 'components/Button'
 import Label from 'components/Label'
+import BodyText from 'components/BodyText'
 
 import mapWithIndex from 'util/mapWithIndex'
 
@@ -24,6 +25,12 @@ const useStyles = createUseStyles({
 		width: 'fit-content',
 		border: [[1, 'solid', black]],
 		padding: 4,
+	},
+	labelWrapper: {
+		display: 'flex',
+	},
+	attackHeader: {
+		flex: 1,
 	},
 	attackRow: {
 		display: 'flex',
@@ -110,6 +117,17 @@ export default () => {
 	return (
 		<Label label="Attacks" column>
 			<div className={classes.attacksWrapper}>
+				<div className={classes.labelWrapper}>
+					<BodyText className={classes.attackHeader}>
+						Name
+					</BodyText>
+					<BodyText className={classes.attackHeader}>
+						Attack Bonus
+					</BodyText>
+					<BodyText className={classes.attackHeader}>
+						Damage / Type
+					</BodyText>
+				</div>
 				<MappedAttacks
 					attacks={attacks}
 					formVals={formVals}

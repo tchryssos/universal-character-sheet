@@ -21,7 +21,7 @@ const useStyles = createUseStyles(() => {
 
 	return {
 		'@import': [
-			"url('https://fonts.googleapis.com/css?family=Lato&display=swap')",
+			"url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap')",
 		],
 		'@global': {
 			html: baseStyle,

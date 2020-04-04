@@ -8,11 +8,8 @@ const useStyles = createUseStyles({
 		fontSize: 16,
 		color: black,
 	},
-	medium: {
-		fontWeight: 500,
-	},
 	bold: {
-		fontWeight: 600,
+		fontWeight: 700,
 	},
 	lightText: {
 		color: white,
