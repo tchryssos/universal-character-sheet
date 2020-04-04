@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { createUseStyles } from 'react-jss'
 import prop from 'ramda/src/prop'
-import path from 'ramda/src/path'
-import assocPath from 'ramda/src/assocPath'
+import remove from 'ramda/src/remove'
+import assoc from 'ramda/src/assoc'
 
 import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
+import Button from 'components/Button'
 
 import mapWithIndex from 'util/mapWithIndex'
 
@@ -15,6 +16,7 @@ import { ATTACKS } from 'constants/schema'
 const useStyles = createUseStyles({
 	attackRow: {
 		display: 'flex',
+		alignItems: 'center',
 		marginBottom: 8,
 		'&:last-child': {
 			marginBottom: 0,
@@ -25,62 +27,63 @@ const useStyles = createUseStyles({
 	},
 })
 
-const MappedAttacks = ({ attacks, classes }) => mapWithIndex(
-	(attack, index) => (
-		<div
-			key={index}
-			className={classes.attackRow}
-		>
-			<div className={classes.inputWrapper}>
-				<TextInput
-					formPath={[ATTACKS, index, 'name']}
-				/>
+const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
+	(attack, index) => {
+		const { setFormVals } = formVals
+
+		const deleteAttack = () => setFormVals(
+			assoc(
+				ATTACKS,
+				remove(
+					index,
+					1,
+					attacks,
+				),
+				formVals,
+			),
+		)
+
+		return (
+			<div
+				key={index}
+				className={classes.attackRow}
+			>
+				<div className={classes.inputWrapper}>
+					<Button
+						label="x"
+						onClick={deleteAttack}
+					/>
+				</div>
+				<div className={classes.inputWrapper}>
+					<TextInput
+						formPath={[ATTACKS, index, 'name']}
+					/>
+				</div>
+				<div className={classes.inputWrapper}>
+					<NumberInput
+						formPath={[ATTACKS, index, 'attackBonus']}
+						min={0}
+					/>
+				</div>
+				<div>
+					<TextInput
+						formPath={[ATTACKS, index, 'damage']}
+					/>
+				</div>
 			</div>
-			<div className={classes.inputWrapper}>
-				<NumberInput
-					formPath={[ATTACKS, index, 'attackBonus']}
-					min={0}
-				/>
-			</div>
-			<div>
-				<TextInput
-					formPath={[ATTACKS, index, 'damage']}
-				/>
-			</div>
-		</div>
-	),
+		)
+	},
 	attacks,
 )
 
 export default () => {
-	const [lastIndex, setLastIndex] = useState(0)
 	const classes = useStyles()
 	const formVals = useContext(SheetContext)
-	const { setFormVals } = formVals
 	const attacks = prop(ATTACKS, formVals)
-	const lastName = path([lastIndex, 'name'], attacks)
-	const lastDamage = path([lastIndex, 'damage'], attacks)
-
-	useEffect(() => {
-		if (lastName && lastDamage) {
-			setFormVals(
-				assocPath(
-					[ATTACKS, lastIndex + 1],
-					{
-						name: '',
-						attackBonus: 0,
-						damage: '',
-					},
-					formVals,
-				),
-			)
-			setLastIndex(lastIndex + 1)
-		}
-	}, [lastName, lastDamage])
-
 	return (
 		<MappedAttacks
 			attacks={attacks}
+			formVals={formVals}
 			classes={classes}
 		/>
 	)
