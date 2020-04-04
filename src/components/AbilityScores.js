@@ -10,6 +10,7 @@ import modCalc from 'util/modCalc'
 
 import NumberInput from 'components/NumberInput'
 import CheckboxInput from 'components/CheckboxInput'
+import BodyText from 'components/BodyText'
 
 import { attributes } from 'constants/attributes'
 import { VAL, MOD, PROF } from 'constants/schema'
@@ -29,8 +30,6 @@ const useStyles = createUseStyles({
 	},
 	tableHeader: {
 		backgroundColor: shadow,
-		color: white,
-		fontWeight: 'bold',
 	},
 	nameBox: {
 		width: '40%',
@@ -61,9 +60,21 @@ const TableHeader = ({ classes }) => (
 		)}
 	>
 		<div className={classes.nameBox} />
-		<div className={classes.numberBox}>SCORE</div>
-		<div className={classes.numberBox}>MOD</div>
-		<div className={classes.saveBox}>PROF</div>
+		<div className={classes.numberBox}>
+			<BodyText lightText bold>
+				SCORE
+			</BodyText>
+		</div>
+		<div className={classes.numberBox}>
+			<BodyText lightText bold>
+				MOD
+			</BodyText>
+		</div>
+		<div className={classes.saveBox}>
+			<BodyText lightText bold>
+				SCORE
+			</BodyText>
+		</div>
 	</div>
 )
 
@@ -82,7 +93,9 @@ const AttrRows = ({ classes }) => {
 
 			return (
 				<div className={classes.tableRow} key={attribute}>
-					<div className={classes.nameBox}>{attribute}</div>
+					<div className={classes.nameBox}>
+						<BodyText>{attribute}</BodyText>
+					</div>
 					<div className={classes.numberBox}>
 						<NumberInput
 							min={0}

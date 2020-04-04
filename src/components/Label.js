@@ -2,6 +2,8 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import clsx from 'clsx'
 
+import BodyText from 'components/BodyText'
+
 const useStyles = createUseStyles({
 	label: {
 		display: 'flex',
@@ -13,7 +15,6 @@ const useStyles = createUseStyles({
 		alignItems: 'center',
 	},
 	labelText: {
-		fontWeight: 'bold',
 		marginRight: 8,
 	},
 	columnText: {
@@ -35,14 +36,15 @@ export default ({
 				)}
 
 			>
-				<p
+				<BodyText
+					bold
 					className={clsx(
 						classes.labelText,
 						{ [classes.columnText]: column },
 					)}
 				>
 					{label}
-				</p>
+				</BodyText>
 				{children}
 			</label>
 		)

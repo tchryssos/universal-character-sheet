@@ -9,6 +9,7 @@ import append from 'ramda/src/append'
 import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
 import Button from 'components/Button'
+import Label from 'components/Label'
 
 import mapWithIndex from 'util/mapWithIndex'
 
@@ -107,16 +108,18 @@ export default () => {
 		),
 	)
 	return (
-		<div className={classes.attacksWrapper}>
-			<MappedAttacks
-				attacks={attacks}
-				formVals={formVals}
-				classes={classes}
-			/>
-			<Button
-				onClick={addAttack}
-				label="+"
-			/>
-		</div>
+		<Label label="Attacks" column>
+			<div className={classes.attacksWrapper}>
+				<MappedAttacks
+					attacks={attacks}
+					formVals={formVals}
+					classes={classes}
+				/>
+				<Button
+					onClick={addAttack}
+					label="+"
+				/>
+			</div>
+		</Label>
 	)
 }
