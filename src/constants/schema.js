@@ -198,7 +198,9 @@ export const schema = {
 		{
 			name: '',
 			attackBonus: 0,
-			damage: '',
+			damageDiceCount: 1,
+			damageDiceKind: 8,
+			damageType: '',
 		},
 	],
 
