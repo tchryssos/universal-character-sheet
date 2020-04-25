@@ -15,6 +15,7 @@ import IconStat from 'components/IconStat'
 import DeathSaves from 'components/DeathSaves'
 import Attacks from 'components/Attacks'
 import HashViewer from 'components/HashViewer'
+import DiceInput from 'components/DiceInput'
 
 import Heart from 'static/svg/heart.svg'
 import HalfHeart from 'static/svg/halfHeart.svg'
@@ -27,7 +28,7 @@ import {
 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
 	AC, CURRENT_HIT_POINTS, MAX_HIT_POINTS, TEMP_HIT_POINTS,
-	SPEED, TOTAL_HIT_DICE, HIT_DICE,
+	SPEED, TOTAL_HIT_DICE_COUNT, TOTAL_HIT_DICE_TYPE, CURRENT_HIT_DICE,
 
 } from 'constants/schema'
 
@@ -140,14 +141,14 @@ const Home = () => {
 						formPath={[SPEED]}
 						min={0}
 					/>
-					<TextInput
+					<DiceInput
+						diceCountPath={[TOTAL_HIT_DICE_COUNT]}
+						diceTypePath={[TOTAL_HIT_DICE_TYPE]}
 						label="Total Hit Dice"
-						formPath={[TOTAL_HIT_DICE]}
-
 					/>
 					<NumberInput
 						label="Remaining Hit Dice"
-						formPath={[HIT_DICE]}
+						formPath={[CURRENT_HIT_DICE]}
 						min={0}
 					/>
 					<DeathSaves />

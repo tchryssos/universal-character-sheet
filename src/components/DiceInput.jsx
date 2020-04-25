@@ -3,6 +3,7 @@ import { createUseStyles } from 'react-jss'
 
 import NumberInput from 'components/NumberInput'
 import SelectInput from 'components/SelectInput'
+import Label from 'components/Label'
 
 import { dice } from 'constants/attributes'
 
@@ -16,22 +17,24 @@ const useStyles = createUseStyles({
 	},
 })
 
-const DiceInput = ({ diceCountPath, diceTypePath }) => {
+const DiceInput = ({ label, diceCountPath, diceTypePath }) => {
 	const classes = useStyles()
 	return (
-		<div className={classes.diceInputWrapper}>
-			<NumberInput
-				formPath={diceCountPath}
-				min={1}
-				max={20}
-				className={classes.input}
-			/>
-			<SelectInput
-				formPath={diceTypePath}
-				options={dice}
-				className={classes.input}
-			/>
-		</div>
+		<Label label={label}>
+			<div className={classes.diceInputWrapper}>
+				<NumberInput
+					formPath={diceCountPath}
+					min={1}
+					max={20}
+					className={classes.input}
+				/>
+				<SelectInput
+					formPath={diceTypePath}
+					options={dice}
+					className={classes.input}
+				/>
+			</div>
+		</Label>
 	)
 }
 
