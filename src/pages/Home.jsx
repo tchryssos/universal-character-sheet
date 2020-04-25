@@ -23,7 +23,7 @@ import Shield from 'static/svg/shield.svg'
 import HeartStack from 'static/svg/heartStack.svg'
 import Run from 'static/svg/run.svg'
 
-import { alignments } from 'constants/attributes'
+import { alignments } from 'constants/game'
 import {
 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,

@@ -202,7 +202,7 @@ export const schema = {
 			attackBonus: 0,
 			damageDiceCount: 1,
 			damageDiceType: 8,
-			damageType: '',
+			damageType: 'default',
 		},
 	],
 

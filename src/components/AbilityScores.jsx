@@ -12,9 +12,9 @@ import NumberInput from 'components/NumberInput'
 import CheckboxInput from 'components/CheckboxInput'
 import BodyText from 'components/BodyText'
 
-import { attributes } from 'constants/attributes'
+import { attributes } from 'constants/game'
 import { VAL, MOD, PROF } from 'constants/schema'
-import { shadow, white } from 'constants/styles/colors'
+import { shadow } from 'constants/styles/colors'
 import { fontSizeMd } from 'constants/styles/text'
 
 const useStyles = createUseStyles({

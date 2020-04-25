@@ -5,7 +5,7 @@ import NumberInput from 'components/NumberInput'
 import SelectInput from 'components/SelectInput'
 import Label from 'components/Label'
 
-import { dice } from 'constants/attributes'
+import { dice } from 'constants/game'
 
 const useStyles = createUseStyles({
 	diceInputWrapper: {

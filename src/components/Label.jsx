@@ -23,7 +23,7 @@ const useStyles = createUseStyles({
 })
 
 const Label = ({
-	label, key, column, children,
+	label, key, column, className, children,
 }) => {
 	const classes = useStyles()
 	if (label) {
@@ -33,6 +33,7 @@ const Label = ({
 				className={clsx(
 					classes.label,
 					{ [classes.column]: column },
+					className,
 				)}
 
 			>

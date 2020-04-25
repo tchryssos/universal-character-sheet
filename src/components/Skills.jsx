@@ -4,7 +4,7 @@ import map from 'ramda/src/map'
 import path from 'ramda/src/path'
 
 import SheetContext from 'contexts/sheetContext'
-import { skills } from 'constants/attributes'
+import { skills } from 'constants/game'
 import {
 	PROF, ABILITY, MOD,
 } from 'constants/schema'
