@@ -105,7 +105,7 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 	attacks,
 )
 
-export default () => {
+const Attacks = () => {
 	const classes = useStyles()
 	const formVals = useContext(SheetContext)
 	const { setFormVals } = formVals
@@ -153,3 +153,5 @@ export default () => {
 		</Label>
 	)
 }
+
+export default Attacks

@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({
+const TextInput = ({
 	setFormVals, formVals, formPath, label,
 }) => {
 	const classes = useStyles()
@@ -23,3 +23,5 @@ export default ({
 		/>
 	)
 }
+
+export default TextInput

@@ -51,7 +51,7 @@ const SkillRow = ({
 	</div>
 )
 
-export default () => {
+const Skills = () => {
 	const classes = useStyles()
 	const formVals = useContext(SheetContext)
 
@@ -76,3 +76,5 @@ export default () => {
 		</div>
 	)
 }
+
+export default Skills

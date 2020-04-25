@@ -22,7 +22,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({
+const Label = ({
 	label, key, column, children,
 }) => {
 	const classes = useStyles()
@@ -55,3 +55,5 @@ export default ({
 		</>
 	)
 }
+
+export default Label

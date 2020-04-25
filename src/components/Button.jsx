@@ -8,7 +8,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({ label, onClick, className }) => {
+const Button = ({ label, onClick, className }) => {
 	const classes = useStyles()
 	return (
 		<button
@@ -23,3 +23,5 @@ export default ({ label, onClick, className }) => {
 		</button>
 	)
 }
+
+export default Button

@@ -13,7 +13,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({ string }) => {
+const HashViewer = ({ string }) => {
 	const classes = useStyles()
 	return (
 		<div className={classes.viewer}>
@@ -21,3 +21,5 @@ export default ({ string }) => {
 		</div>
 	)
 }
+
+export default HashViewer

@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({ diceCountPath, diceTypePath }) => {
+const DiceInput = ({ diceCountPath, diceTypePath }) => {
 	const classes = useStyles()
 	return (
 		<div className={classes.diceInputWrapper}>
@@ -34,3 +34,5 @@ export default ({ diceCountPath, diceTypePath }) => {
 		</div>
 	)
 }
+
+export default DiceInput

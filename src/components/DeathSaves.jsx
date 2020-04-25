@@ -48,7 +48,7 @@ const Saves = ({ formVals, formPath, classes }) => {
 	)
 }
 
-export default () => {
+const DeathSaves = () => {
 	const classes = useStyles()
 	const formVals = useContext(SheetContext)
 
@@ -69,3 +69,5 @@ export default () => {
 		</Label>
 	)
 }
+
+export default DeathSaves

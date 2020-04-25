@@ -122,7 +122,7 @@ const AttrRows = ({ classes }) => {
 	)
 }
 
-export default () => {
+const AbilityScores = () => {
 	const classes = useStyles()
 	return (
 		<div className={classes.tableWrapper}>
@@ -131,3 +131,5 @@ export default () => {
 		</div>
 	)
 }
+
+export default AbilityScores

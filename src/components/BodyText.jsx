@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({
+const BodyText = ({
 	children, bold, medium, lightText, className,
 }) => {
 	const classes = useStyles()
@@ -36,3 +36,5 @@ export default ({
 		</p>
 	)
 }
+
+export default BodyText

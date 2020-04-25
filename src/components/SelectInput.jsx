@@ -27,7 +27,7 @@ const Options = ({ options, classes }) => options.map(
 	),
 )
 
-export default ({
+const SelectInput = ({
 	formPath = [], label, options, className,
 }) => {
 	const classes = useStyles()
@@ -51,3 +51,5 @@ export default ({
 		</Label>
 	)
 }
+
+export default SelectInput

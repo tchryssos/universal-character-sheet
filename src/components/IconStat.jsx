@@ -15,7 +15,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({
+const IconStat = ({
 	icon, formPath, min, max, label,
 }) => {
 	const classes = useStyles()
@@ -35,3 +35,5 @@ export default ({
 		</div>
 	)
 }
+
+export default IconStat

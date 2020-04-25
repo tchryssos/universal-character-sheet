@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
 	},
 })
 
-export default ({
+const Input = ({
 	formPath = [], label, min, max,
 	readOnly, type, labelColumn, className,
 }) => {
@@ -46,6 +46,7 @@ export default ({
 				/>
 			</Label>
 		</div>
-
 	)
 }
+
+export default Input

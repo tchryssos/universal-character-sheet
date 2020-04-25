@@ -2,7 +2,7 @@ import React from 'react'
 
 import Input from 'components/Input'
 
-export default ({
+const NumberInput = ({
 	setFormVals, formVals, formPath, label,
 	min, max, readOnly, labelColumn, className,
 }) => (
@@ -19,3 +19,5 @@ export default ({
 		className={className}
 	/>
 )
+
+export default NumberInput
