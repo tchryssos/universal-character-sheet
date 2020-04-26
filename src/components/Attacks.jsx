@@ -13,7 +13,7 @@ import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
 import Button from 'components/Button'
 import Label from 'components/Label'
-import BodyText from 'components/BodyText'
+import Body from 'components/typography/Body'
 import DiceInput from 'components/DiceInput'
 import SelectInput from 'components/SelectInput'
 
@@ -38,7 +38,7 @@ const useStyles = createUseStyles({
 	rowWrapper: {
 		display: 'flex',
 		flexWrap: 'nowrap',
-		alignItems: 'center',
+		alignItems: 'flex-top',
 		justifyContent: 'space-between',
 		paddingBottom: 8,
 		'&:last-child': {
@@ -74,29 +74,29 @@ const useStyles = createUseStyles({
 const HeaderRow = ({ classes }) => (
 	<div className={classes.rowWrapper}>
 		<div className={clsx(classes.rowBox, classes.attackName)}>
-			<BodyText>
+			<Body>
 				Attack Name
-			</BodyText>
+			</Body>
 		</div>
 		<div className={clsx(classes.rowBox, classes.attackBonus)}>
-			<BodyText>
+			<Body>
 				Attack Bonus
-			</BodyText>
+			</Body>
 		</div>
 		<div className={clsx(classes.rowBox, classes.damDice)}>
-			<BodyText>
+			<Body>
 				Damage Dice
-			</BodyText>
+			</Body>
 		</div>
 		<div className={clsx(classes.rowBox, classes.damType)}>
-			<BodyText>
+			<Body>
 				Damage Type(s)
-			</BodyText>
+			</Body>
 		</div>
 		<div className={clsx(classes.rowBox, classes.damBonus)}>
-			<BodyText>
+			<Body>
 				Damage Bonus
-			</BodyText>
+			</Body>
 		</div>
 		<div className={classes.deleteWrapper} />
 	</div>

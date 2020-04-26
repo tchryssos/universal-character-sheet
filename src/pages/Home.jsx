@@ -37,7 +37,7 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
-		margin: [[16, '10%']],
+		margin: [[16]],
 	},
 	form: {
 		display: 'flex',

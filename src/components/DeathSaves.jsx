@@ -7,7 +7,7 @@ import { SUCCESSFUL_DEATH_SAVES, FAILED_DEATH_SAVES } from 'constants/schema'
 
 import CheckboxInput from 'components/CheckboxInput'
 import Label from 'components/Label'
-import BodyText from 'components/BodyText'
+import Body from 'components/typography/Body'
 
 const useStyles = createUseStyles({
 	savesWrapper: {
@@ -30,7 +30,7 @@ const Saves = ({ formVals, formPath, classes }) => {
 	const label = formPath === SUCCESSFUL_DEATH_SAVES ? 'Successes' : 'Failures'
 	return (
 		<div className={classes.saveWrapper}>
-			<BodyText>{label}</BodyText>
+			<Body>{label}</Body>
 			<div className={classes.checkboxWrapper}>
 				{
 					times(

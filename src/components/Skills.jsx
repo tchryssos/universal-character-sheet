@@ -12,7 +12,7 @@ import {
 import NumberInput from 'components/NumberInput'
 import CheckboxInput from 'components/CheckboxInput'
 import Label from 'components/Label'
-import BodyText from 'components/BodyText'
+import Body from 'components/typography/Body'
 
 const useStyles = createUseStyles({
 	skillsWrapper: {
@@ -38,7 +38,7 @@ const SkillRow = ({
 }) => (
 	<div className={classes.skillRow}>
 		<div className={classes.nameBox}>
-			<BodyText>{skill}</BodyText>
+			<Body>{skill}</Body>
 		</div>
 		<NumberInput
 			readOnly

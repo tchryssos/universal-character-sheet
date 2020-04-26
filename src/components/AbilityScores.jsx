@@ -10,7 +10,7 @@ import modCalc from 'util/modCalc'
 
 import NumberInput from 'components/NumberInput'
 import CheckboxInput from 'components/CheckboxInput'
-import BodyText from 'components/BodyText'
+import Body from 'components/typography/Body'
 
 import { attributes } from 'constants/game'
 import { VAL, MOD, PROF } from 'constants/schema'
@@ -61,19 +61,19 @@ const TableHeader = ({ classes }) => (
 	>
 		<div className={classes.nameBox} />
 		<div className={classes.numberBox}>
-			<BodyText lightText bold>
+			<Body lightText bold>
 				SCORE
-			</BodyText>
+			</Body>
 		</div>
 		<div className={classes.numberBox}>
-			<BodyText lightText bold>
+			<Body lightText bold>
 				MOD
-			</BodyText>
+			</Body>
 		</div>
 		<div className={classes.saveBox}>
-			<BodyText lightText bold>
+			<Body lightText bold>
 				SCORE
-			</BodyText>
+			</Body>
 		</div>
 	</div>
 )
@@ -94,7 +94,7 @@ const AttrRows = ({ classes }) => {
 			return (
 				<div className={classes.tableRow} key={attribute}>
 					<div className={classes.nameBox}>
-						<BodyText>{attribute}</BodyText>
+						<Body>{attribute}</Body>
 					</div>
 					<div className={classes.numberBox}>
 						<NumberInput

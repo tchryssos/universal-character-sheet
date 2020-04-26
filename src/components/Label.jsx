@@ -2,7 +2,7 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import clsx from 'clsx'
 
-import BodyText from 'components/BodyText'
+import Body from 'components/typography/Body'
 
 const useStyles = createUseStyles({
 	label: {
@@ -37,7 +37,7 @@ const Label = ({
 				)}
 
 			>
-				<BodyText
+				<Body
 					bold
 					className={clsx(
 						classes.labelText,
@@ -45,7 +45,7 @@ const Label = ({
 					)}
 				>
 					{label}
-				</BodyText>
+				</Body>
 				{children}
 			</label>
 		)

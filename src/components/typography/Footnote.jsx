@@ -1,40 +1,40 @@
 import React from 'react'
 import clsx from 'clsx'
 import { createUseStyles } from 'react-jss'
-import { black, white } from 'constants/styles/colors'
+import { black } from 'constants/styles/colors'
 
 const useStyles = createUseStyles({
-	body: {
-		fontSize: 14,
+	footnote: {
+		fontSize: 12,
 		color: black,
+		display: 'block',
+	},
+	medium: {
+		fontWeight: 500,
 	},
 	bold: {
-		fontWeight: 700,
-	},
-	lightText: {
-		color: white,
+		fontWeight: 600,
 	},
 })
 
-const BodyText = ({
-	children, bold, medium, lightText, className,
+const Footnote = ({
+	children, className, bold, medium,
 }) => {
 	const classes = useStyles()
 	return (
-		<p
+		<span
 			className={clsx(
-				classes.body,
+				classes.footnote,
 				{
 					[classes.bold]: bold,
 					[classes.medium]: medium,
-					[classes.lightText]: lightText,
 				},
 				className,
 			)}
 		>
 			{children}
-		</p>
+		</span>
 	)
 }
 
-export default BodyText
+export default Footnote
