@@ -59,6 +59,20 @@ export const ABILITY = 'ability'
 // ATTACKS
 export const ATTACKS = 'attacks'
 
+// DEFAULT VALUES
+export const defaultAttackDamage = {
+	damageDiceCount: 1,
+	damageDiceType: 8,
+	damageType: 'default',
+}
+
+export const defaultAttack = {
+	name: '',
+	attackBonus: 0,
+	damage: [defaultAttackDamage],
+	damageBonus: 0,
+}
+
 export const schema = {
 	// BIOGRAPHICAL
 	[CHAR_NAME]: '',
@@ -197,13 +211,7 @@ export const schema = {
 
 	// ATTACKS
 	[ATTACKS]: [
-		{
-			name: '',
-			attackBonus: 0,
-			damageDiceCount: 1,
-			damageDiceType: 8,
-			damageType: 'default',
-		},
+		defaultAttack,
 	],
 
 }

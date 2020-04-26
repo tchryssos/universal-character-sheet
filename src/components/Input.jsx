@@ -29,23 +29,21 @@ const Input = ({
 	}
 
 	return (
-		<div className={classes.inputWrapper}>
-			<Label label={label} column={labelColumn}>
-				<input
-					type={type}
-					min={min}
-					max={max}
-					className={clsx(
-						classes.input,
-						className,
-					)}
-					name={join('-', formPath)}
-					value={path(formPath, formVals)}
-					onChange={onChange}
-					readOnly={readOnly}
-				/>
-			</Label>
-		</div>
+		<Label label={label} column={labelColumn}>
+			<input
+				type={type}
+				min={min}
+				max={max}
+				className={clsx(
+					classes.input,
+					className,
+				)}
+				name={join('-', formPath)}
+				value={path(formPath, formVals)}
+				onChange={onChange}
+				readOnly={readOnly}
+			/>
+		</Label>
 	)
 }
 

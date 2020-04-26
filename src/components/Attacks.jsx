@@ -20,7 +20,7 @@ import SelectInput from 'components/SelectInput'
 import mapWithIndex from 'util/mapWithIndex'
 
 import SheetContext from 'contexts/sheetContext'
-import { ATTACKS } from 'constants/schema'
+import { ATTACKS, defaultAttack } from 'constants/schema'
 import { damageTypes } from 'constants/game'
 import { black } from 'constants/styles/colors'
 
@@ -52,6 +52,14 @@ const useStyles = createUseStyles({
 		width: '100%',
 		marginRight: 4,
 	},
+	damDice: {
+		display: 'flex',
+		flexDirection: 'column',
+	},
+	damType: {
+		display: 'flex',
+		flexDirection: 'column',
+	},
 	deleteWrapper: {
 		width: 20,
 		minWidth: 20,
@@ -72,7 +80,7 @@ const HeaderRow = ({ classes }) => (
 		</div>
 		<div className={clsx(classes.rowBox, classes.attackBonus)}>
 			<BodyText>
-				Bonus
+				Attack Bonus
 			</BodyText>
 		</div>
 		<div className={clsx(classes.rowBox, classes.damDice)}>
@@ -82,7 +90,12 @@ const HeaderRow = ({ classes }) => (
 		</div>
 		<div className={clsx(classes.rowBox, classes.damType)}>
 			<BodyText>
-				Damage Type
+				Damage Type(s)
+			</BodyText>
+		</div>
+		<div className={clsx(classes.rowBox, classes.damBonus)}>
+			<BodyText>
+				Damage Bonus
 			</BodyText>
 		</div>
 		<div className={classes.deleteWrapper} />
@@ -106,38 +119,65 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 				key={index}
 				className={classes.rowWrapper}
 			>
+				{/* ATTACK NAME */}
 				<div className={clsx(classes.rowBox, classes.attackName)}>
 					<TextInput
 						formPath={[ATTACKS, index, 'name']}
 					/>
 				</div>
+
+				{/* ATTACK BONUS */}
 				<div className={clsx(classes.rowBox, classes.attackBonus)}>
 					<NumberInput
 						formPath={[ATTACKS, index, 'attackBonus']}
 					/>
 				</div>
+
+				{/* DAMAGE DICE */}
 				<div className={clsx(classes.rowBox, classes.damDice)}>
-					<DiceInput
-						diceCountPath={[ATTACKS, index, 'damageDiceCount']}
-						diceTypePath={[ATTACKS, index, 'damageDiceType']}
-					/>
+					{mapWithIndex(
+						(damage, dIndex) => (
+							<DiceInput
+								diceCountPath={[ATTACKS, index, 'damage', dIndex, 'damageDiceCount']}
+								diceTypePath={[ATTACKS, index, 'damage', dIndex, 'damageDiceType']}
+							/>
+						),
+						path([ATTACKS, index, 'damage'], formVals),
+					)}
 				</div>
+
+				{/* DAMAGE TYPE */}
 				<div className={clsx(classes.rowBox, classes.damType)}>
-					<SelectInput
-						options={damageTypes}
-						formPath={[ATTACKS, index, 'damageType']}
+					{mapWithIndex(
+						(damage, dIndex) => (
+							<SelectInput
+								options={damageTypes}
+								formPath={[ATTACKS, index, 'damage', dIndex, 'damageType']}
+							/>
+						),
+						path([ATTACKS, index, 'damage'], formVals),
+					)}
+				</div>
+
+				{/* DAMAGE BONUS */}
+				<div className={clsx(classes.rowBox, classes.damType)}>
+					<NumberInput
+						formPath={[ATTACKS, index, 'damageBonus']}
 					/>
 				</div>
+
+				{/* DELETE ROW */}
 				<div className={clsx(classes.rowBox, classes.deleteWrapper)}>
 					{orNull(
 						length(path([[ATTACKS]], formVals)) > 1,
 						<Button
-							label="x"
+							label="X"
 							onClick={deleteAttack}
 							className={classes.removeButton}
 						/>,
 					)}
 				</div>
+
 			</div>
 		)
 	},
@@ -154,13 +194,7 @@ const Attacks = () => {
 		assoc(
 			ATTACKS,
 			append(
-				{
-					name: '',
-					attackBonus: 0,
-					damageDiceCount: 1,
-					damageDiceType: 8,
-					damageType: 'default',
-				},
+				defaultAttack,
 				attacks,
 			),
 		),
@@ -176,7 +210,7 @@ const Attacks = () => {
 				/>
 				<Button
 					onClick={addAttack}
-					label="+"
+					label="+ Add New Attack"
 				/>
 			</div>
 		</Label>

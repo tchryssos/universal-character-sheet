@@ -5,6 +5,7 @@ import clsx from 'clsx'
 const useStyles = createUseStyles({
 	button: {
 		width: 'fit-content',
+		cursor: 'pointer',
 	},
 })
 
