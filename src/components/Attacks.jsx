@@ -38,7 +38,7 @@ const useStyles = createUseStyles({
 	rowWrapper: {
 		display: 'flex',
 		flexWrap: 'nowrap',
-		alignItems: 'flex-top',
+		alignItems: 'center',
 		justifyContent: 'space-between',
 		paddingBottom: 8,
 		'&:last-child': {
@@ -88,14 +88,14 @@ const HeaderRow = ({ classes }) => (
 				Damage Dice
 			</Body>
 		</div>
-		<div className={clsx(classes.rowBox, classes.damType)}>
-			<Body>
-				Damage Type(s)
-			</Body>
-		</div>
 		<div className={clsx(classes.rowBox, classes.damBonus)}>
 			<Body>
 				Damage Bonus
+			</Body>
+		</div>
+		<div className={clsx(classes.rowBox, classes.damType)}>
+			<Body>
+				Damage Type(s)
 			</Body>
 		</div>
 		<div className={classes.deleteWrapper} />
@@ -146,6 +146,13 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 					)}
 				</div>
 
+				{/* DAMAGE BONUS */}
+				<div className={clsx(classes.rowBox, classes.damType)}>
+					<NumberInput
+						formPath={[ATTACKS, index, 'damageBonus']}
+					/>
+				</div>
+
 				{/* DAMAGE TYPE */}
 				<div className={clsx(classes.rowBox, classes.damType)}>
 					{mapWithIndex(
@@ -157,13 +164,6 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 						),
 						path([ATTACKS, index, 'damage'], formVals),
 					)}
-				</div>
-
-				{/* DAMAGE BONUS */}
-				<div className={clsx(classes.rowBox, classes.damType)}>
-					<NumberInput
-						formPath={[ATTACKS, index, 'damageBonus']}
-					/>
 				</div>
 
 				{/* DELETE ROW */}
