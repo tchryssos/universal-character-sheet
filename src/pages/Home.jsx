@@ -23,12 +23,13 @@ import Shield from 'static/svg/shield.svg'
 import HeartStack from 'static/svg/heartStack.svg'
 import Run from 'static/svg/run.svg'
 
-import { alignments } from 'constants/game'
+import { alignments, attributeOptions } from 'constants/game'
 import {
 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
 	AC, CURRENT_HIT_POINTS, MAX_HIT_POINTS, TEMP_HIT_POINTS,
 	SPEED, TOTAL_HIT_DICE_COUNT, TOTAL_HIT_DICE_TYPE, CURRENT_HIT_DICE,
+	CASTING_ABILITY,
 
 } from 'constants/schema'
 
@@ -153,6 +154,11 @@ const Home = () => {
 					/>
 					<DeathSaves />
 					<Attacks />
+					<SelectInput
+						options={attributeOptions}
+						label="Casting Ability"
+						formPath={[CASTING_ABILITY]}
+					/>
 				</form>
 				<HashViewer string={hash} />
 			</div>
