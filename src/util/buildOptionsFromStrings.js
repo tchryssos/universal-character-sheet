@@ -10,11 +10,14 @@ export default (strings = []) => map(
 	(string) => {
 		let wordChunks = match(/[A-Z]/g, string)
 		wordChunks = map(
-			(word) => any(
-				(lc) => (lc === word.toLowerCase() ? word.toLowerCase() : word),
-				lowercaseWords,
-			),
-			wordChunks,
+			(word) => {
+				const lcWord = word.toLowerCase()
+				const lcWordMatch = any(
+					(lc) => lc === lcWord,
+					lowercaseWords,
+				)
+				return lcWordMatch ? lcWord : word
+			}, wordChunks,
 		)
 		const label = capitalize(join(' ', wordChunks))
 		return ({ label, value: string })
