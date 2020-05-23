@@ -4,7 +4,8 @@ import {
 	BrowserRouter, Route, Switch, withRouter,
 } from 'react-router-dom'
 import { createUseStyles } from 'react-jss'
-import Home from 'pages/Home'
+import SheetContextProvider from 'components/SheetContextProvider'
+import CharacterSheet from 'components/CharacterSheet/CharacterSheet'
 
 import { fontSizeMd } from 'constants/styles/text'
 
@@ -48,12 +49,12 @@ const App = ({ location }) => {
 	// with access to router location
 	useStyles()
 	return (
-		<>
+		<SheetContextProvider>
 			<Switch>
-				<Route path="/" exact component={Home} />
+				<Route path="/" exact component={CharacterSheet} />
 			</Switch>
 			{/* NavBar?? */}
-		</>
+		</SheetContextProvider>
 	)
 }
 
