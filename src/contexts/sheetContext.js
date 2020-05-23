@@ -1,9 +1,10 @@
 import React from 'react'
-import { schema } from 'constants/schema'
 
 const SheetContext = React.createContext({
-	...schema,
+	formVals: {},
 	setFormVals: () => {},
+	gameType: '',
+	setGameType: () => {},
 })
 SheetContext.displayName = 'SheetContext'
 
