@@ -18,18 +18,17 @@ export const LEVEL_UP_FUNC = 'levelUpFunc'
 
 // START - ABILITIES - START
 export const ABILITY_SCORES = 'abilityScores' // schema key
+export const ABILITY_LIST = 'abilityList' // schem key
 export const STR = 'strength'
 export const DEX = 'dexterity'
 export const CON = 'constitution'
 export const WIS = 'wisdom'
 export const INT = 'intelligence'
 export const CHA = 'charisma'
-
-export const ABILITIES = [
+export const TRAD_ABILITIES = [
 	STR, DEX, CON, WIS, INT, CHA,
 ]
 
-export const ABILITY_OPTIONS = buildOptionsFromStrings(ABILITIES)
 // END - ABILITIES - END
 
 // START - MISC GAME - START

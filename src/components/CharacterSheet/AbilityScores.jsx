@@ -3,17 +3,20 @@ import { createUseStyles } from 'react-jss'
 import path from 'ramda/src/path'
 import assocPath from 'ramda/src/assocPath'
 import prop from 'ramda/src/prop'
+import keys from 'ramda/src/keys'
 import clsx from 'clsx'
 
 import SheetContext from 'contexts/sheetContext'
 import modCalc from 'util/modCalc'
+import orNull from 'util/orNull'
 
 import NumberInput from 'components/NumberInput'
 import CheckboxInput from 'components/CheckboxInput'
 import Body from 'components/typography/Body'
 
-import { attributes } from 'constants/game'
-import { VAL, MOD, PROF } from 'constants/schema'
+import {
+	MOD, PROF, VAL, ABILITY_LIST, ABILITY_SCORES,
+} from 'data/bank'
 import { shadow } from 'constants/styles/colors'
 import { fontSizeMd } from 'constants/styles/text'
 
@@ -78,29 +81,29 @@ const TableHeader = ({ classes }) => (
 	</div>
 )
 
-const AttrRows = ({ classes }) => {
-	const formVals = useContext(SheetContext)
-	const setFormVals = prop('setFormVals', formVals)
-	return attributes.map(
-		(attribute) => {
+const AttrRows = ({
+	classes, abilities, setFormVals, formVals,
+}) => {
+	return abilities.map(
+		(ability) => {
 			useEffect(() => { // On ability value change, update ability mod
 				setFormVals(assocPath(
-					[attribute, MOD],
-					modCalc(path([attribute, VAL], formVals)),
+					[ABILITY_SCORES, ability, MOD],
+					modCalc(path([ABILITY_SCORES, ability, VAL], formVals)),
 					formVals,
 				))
-			}, [path([attribute, VAL], formVals)])
+			}, [path([ABILITY_SCORES, ability, VAL], formVals)])
 
 			return (
-				<div className={classes.tableRow} key={attribute}>
+				<div className={classes.tableRow} key={ability}>
 					<div className={classes.nameBox}>
-						<Body>{attribute}</Body>
+						<Body>{ability}</Body>
 					</div>
 					<div className={classes.numberBox}>
 						<NumberInput
 							min={0}
 							max={30}
-							formPath={[attribute, VAL]}
+							formPath={[ABILITY_SCORES, ability, VAL]}
 						/>
 					</div>
 					<div className={classes.numberBox}>
@@ -108,12 +111,12 @@ const AttrRows = ({ classes }) => {
 							min={-5}
 							max={10}
 							readOnly
-							formPath={[attribute, MOD]}
+							formPath={[ABILITY_SCORES, ability, MOD]}
 						/>
 					</div>
 					<div className={classes.saveBox}>
 						<CheckboxInput
-							formPath={[attribute, PROF]}
+							formPath={[ABILITY_SCORES, ability, PROF]}
 						/>
 					</div>
 				</div>
@@ -124,11 +127,20 @@ const AttrRows = ({ classes }) => {
 
 const AbilityScores = () => {
 	const classes = useStyles()
-	return (
+	const { formVals, setFormVals } = useContext(SheetContext)
+	const abilities = prop(ABILITY_LIST, formVals)
+	return orNull(
+		abilities,
 		<div className={classes.tableWrapper}>
 			<TableHeader classes={classes} />
-			<AttrRows classes={classes} />
-		</div>
+			<AttrRows
+				classes={classes}
+				abilities={abilities}
+				setFormVals={setFormVals}
+				formVals={formVals}
+			/>
+		</div>,
+		true,
 	)
 }
 

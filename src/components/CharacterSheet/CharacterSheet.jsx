@@ -5,6 +5,7 @@ import propOr from 'ramda/src/propOr'
 import F from 'ramda/src/F'
 
 import CharacterMeta from 'components/CharacterSheet/CharacterMeta'
+import AbilityScores from 'components/CharacterSheet/AbilityScores'
 
 import SheetContext from 'contexts/sheetContext'
 
@@ -37,6 +38,7 @@ export default () => {
 		<div className={classes.wrapper}>
 			<form className={classes.form}>
 				<CharacterMeta />
+				<AbilityScores />
 			</form>
 		</div>
 	)

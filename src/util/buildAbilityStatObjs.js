@@ -1,8 +1,10 @@
 import forEach from 'ramda/src/forEach'
+import assoc from 'ramda/src/assoc'
+
 import { VAL, MOD, PROF } from 'data/bank'
 
 export default (abilities = []) => {
-	const obj = {}
+	let obj = {}
 	forEach(
 		(ability) => {
 			const abilityObj = {
@@ -10,8 +12,9 @@ export default (abilities = []) => {
 				[MOD]: 0,
 				[PROF]: false,
 			}
-			obj[ability] = abilityObj
+			obj = assoc(ability, abilityObj, obj)
 		},
 		abilities,
 	)
+	return obj
 }
