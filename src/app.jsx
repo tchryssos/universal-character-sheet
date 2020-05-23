@@ -6,6 +6,7 @@ import {
 import { createUseStyles } from 'react-jss'
 import SheetContextProvider from 'components/SheetContextProvider'
 import CharacterSheet from 'components/CharacterSheet/CharacterSheet'
+import Menu from 'components/Menu'
 
 import { fontSizeMd } from 'constants/styles/text'
 
@@ -53,7 +54,7 @@ const App = ({ location }) => {
 			<Switch>
 				<Route path="/" exact component={CharacterSheet} />
 			</Switch>
-			{/* NavBar?? */}
+			<Menu />
 		</SheetContextProvider>
 	)
 }
