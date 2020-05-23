@@ -26,7 +26,7 @@ const useStyles = createUseStyles({
 		display: 'flex',
 		flexDirection: 'column',
 		transition: 'transform 0.3s',
-		transform: 'translateX(-300px)',
+		transform: 'translateX(-700px)',
 		backgroundColor: forest,
 		borderRadius: 4,
 	},
