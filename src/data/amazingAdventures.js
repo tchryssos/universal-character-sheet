@@ -15,7 +15,7 @@ import {
 	SUCCESSFUL_DEATH_SAVES, FAILED_DEATH_SAVES, ATTACKS, CASTING_ABILITY,
 	SPELL_SAVE, MAGIC_ATTACK_BONUS, PSIONICS, DEFAULT_ATTACK, LEVEL_UP_FUNC,
 	ABILITY_SCORES, SKILLS, SKILL_LIST, HIT_POINTS, HIT_DICE,
-	DEATH_SAVES,
+	DEATH_SAVES, TRAD_ALIGNMENTS, ALIGNMENTS,
 } from 'data/bank'
 import buildAbilityStatObjs from 'util/buildAbilityStatObjs'
 import profBonusCalc from 'util/profBonusCalc'
@@ -42,12 +42,13 @@ const levelUpFunc = (formVals, setFormVals, level) => {
 }
 
 export const schema = {
-	// BIOGRAPHICAL
+	// META
 	[CHAR_NAME]: '',
 	[CHAR_CLASS]: '',
 	[LEVEL]: 1,
 	[LEVEL_UP_FUNC]: levelUpFunc,
 	[ALIGNMENT]: DEFAULT,
+	[ALIGNMENTS]: TRAD_ALIGNMENTS,
 
 	[ABILITY_SCORES]: { ...buildAbilityStatObjs(ABILITIES) },
 	[INSPIRATION]: 0,

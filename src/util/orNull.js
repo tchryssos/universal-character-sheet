@@ -1,4 +1,7 @@
-export default (bool, truthy) => {
+export default (bool, truthy, strict) => {
+	if (strict && bool !== undefined) {
+		return truthy
+	}
 	if (bool) {
 		return truthy
 	}

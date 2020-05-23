@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { createUseStyles } from 'react-jss'
 
+import CharacterMeta from 'components/CharacterSheet/CharacterMeta'
+
 import SheetContext from 'contexts/sheetContext'
 
 const useStyles = createUseStyles({
@@ -24,7 +26,7 @@ export default () => {
 	return (
 		<div className={classes.wrapper}>
 			<form className={classes.form}>
-				this is a form
+				<CharacterMeta />
 			</form>
 		</div>
 	)

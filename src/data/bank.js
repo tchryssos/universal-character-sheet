@@ -7,12 +7,12 @@ export const CHAR_NAME = 'charName'
 export const CHAR_CLASS = 'charClass'
 export const LEVEL = 'level'
 export const ALIGNMENT = 'alignment'
-export const ALIGNMENTS = [
+export const TRAD_ALIGNMENTS = [
 	'lawfulGood', 'neutralGood', 'chaoticGood',
 	'lawfulNeutral', 'trueNeutral', 'chaoticNeutral',
 	'lawfulEvil', 'neutralEvil', 'chaoticEvil',
 ]
-export const ALIGNMENT_OPTIONS = buildOptionsFromStrings(ALIGNMENTS)
+export const ALIGNMENTS = 'alignments' // schema key
 export const LEVEL_UP_FUNC = 'levelUpFunc'
 // END - BIOGRAPHICAL - END
 
