@@ -13,9 +13,11 @@ export const ALIGNMENTS = [
 	'lawfulEvil', 'neutralEvil', 'chaoticEvil',
 ]
 export const ALIGNMENT_OPTIONS = buildOptionsFromStrings(ALIGNMENTS)
+export const LEVEL_UP_FUNC = 'levelUpFunc'
 // END - BIOGRAPHICAL - END
 
 // START - ABILITIES - START
+export const ABILITY_SCORES = 'abilityScores' // schema key
 export const STR = 'strength'
 export const DEX = 'dexterity'
 export const CON = 'constitution'
@@ -63,6 +65,9 @@ export const DICE = [
 // END - MISC GAME - END
 
 // START - SKILLS - START
+export const SKILLS = 'skills' // schema key
+export const SKILL_LIST = 'skillList' // schema key
+
 export const ACROBATICS = 'acrobatics'
 export const ANIMAL_HANDLING = 'animalHandling'
 export const ATHLETICS = 'athletics'
@@ -87,12 +92,15 @@ export const SURVIVAL = 'survival'
 export const AC = 'ac'
 export const INITIATIVE = 'initiative'
 export const SPEED = 'speed'
+export const HIT_POINTS = 'hitPoints' // schema key
 export const MAX_HIT_POINTS = 'maxHitPoints'
 export const CURRENT_HIT_POINTS = 'currentHitPoints'
 export const TEMP_HIT_POINTS = 'tempHitPoints'
-export const CURRENT_HIT_DICE = 'hitDice'
+export const HIT_DICE = 'hitDice' // schema key
+export const CURRENT_HIT_DICE_COUNT = 'currentHitDiceCount'
 export const TOTAL_HIT_DICE_COUNT = 'totalHitDiceCount'
 export const TOTAL_HIT_DICE_TYPE = 'totalHitDiceType'
+export const DEATH_SAVES = 'deathSaves'
 export const SUCCESSFUL_DEATH_SAVES = 'successfulDeathSaves'
 export const FAILED_DEATH_SAVES = 'failedDeathSaves'
 // END - COMBAT STATS - END

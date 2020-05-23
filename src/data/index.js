@@ -1,5 +1,5 @@
-import amazingAdventures from 'data/amazingAdventures'
+import { schema } from 'data/amazingAdventures'
 
 export default {
-	amazingAdventures,
+	amazingAdventures: schema,
 }

@@ -1,17 +1,24 @@
+import { useEffect } from 'react'
+import mergeDeepRight from 'ramda/src/mergeDeepRight'
+import prop from 'ramda/src/prop'
+
 import {
 	ABILITIES, ABILITY, PROF, DEX, WIS,
-	STR, CHA, INT, CON, CHAR_NAME,
+	STR, CHA, INT, CHAR_NAME,
 	ACROBATICS, ANIMAL_HANDLING, ATHLETICS, DECEPTION, HISTORY,
 	INSIGHT, INTIMIDATION, INVESTIGATION, MEDICINE, NATURE,
 	PERCEPTION, PERFORMANCE, PERSUASION, RELIGION, SCIENCE,
 	SLEIGHT_OF_HAND, STEALTH, SURVIVAL, CHAR_CLASS, LEVEL,
 	ALIGNMENT, DEFAULT, INSPIRATION, PROF_BONUS, PAS_WIS,
 	AC, INITIATIVE, SPEED, MAX_HIT_POINTS, CURRENT_HIT_POINTS,
-	TEMP_HIT_POINTS, CURRENT_HIT_DICE, TOTAL_HIT_DICE_COUNT, TOTAL_HIT_DICE_TYPE,
+	TEMP_HIT_POINTS, CURRENT_HIT_DICE_COUNT, TOTAL_HIT_DICE_COUNT, TOTAL_HIT_DICE_TYPE,
 	SUCCESSFUL_DEATH_SAVES, FAILED_DEATH_SAVES, ATTACKS, CASTING_ABILITY,
-	SPELL_SAVE, MAGIC_ATTACK_BONUS, PSIONICS, DEFAULT_ATTACK,
+	SPELL_SAVE, MAGIC_ATTACK_BONUS, PSIONICS, DEFAULT_ATTACK, LEVEL_UP_FUNC,
+	ABILITY_SCORES, SKILLS, SKILL_LIST, HIT_POINTS, HIT_DICE,
+	DEATH_SAVES,
 } from 'data/bank'
 import buildAbilityStatObjs from 'util/buildAbilityStatObjs'
+import profBonusCalc from 'util/profBonusCalc'
 
 const skillList = [
 	ACROBATICS, ANIMAL_HANDLING, ATHLETICS, DECEPTION, HISTORY,
@@ -20,17 +27,36 @@ const skillList = [
 	SLEIGHT_OF_HAND, STEALTH, SURVIVAL,
 ]
 
-export default {
+const levelUpFunc = (formVals, setFormVals, level) => {
+	useEffect(() => {
+		setFormVals(
+			mergeDeepRight(
+				formVals,
+				{
+					[PROF_BONUS]: profBonusCalc(level),
+					[TOTAL_HIT_DICE_COUNT]: prop(TOTAL_HIT_DICE_COUNT, formVals) + 1,
+				},
+			),
+		)
+	}, [level])
+}
+
+export const schema = {
+	// BIOGRAPHICAL
 	[CHAR_NAME]: '',
 	[CHAR_CLASS]: '',
 	[LEVEL]: 1,
+	[LEVEL_UP_FUNC]: levelUpFunc,
 	[ALIGNMENT]: DEFAULT,
-	abilities: { ...buildAbilityStatObjs(ABILITIES) },
+
+	[ABILITY_SCORES]: { ...buildAbilityStatObjs(ABILITIES) },
 	[INSPIRATION]: 0,
 	[PROF_BONUS]: 2,
 	[PAS_WIS]: 10,
-	skillList,
-	skills: {
+
+	// SKILLS
+	[SKILL_LIST]: skillList,
+	[SKILLS]: {
 		[ACROBATICS]: {
 			[ABILITY]: DEX,
 			[PROF]: false,
@@ -104,21 +130,22 @@ export default {
 			[PROF]: false,
 		},
 	},
+
 	// COMBAT STATS
 	[AC]: 10,
 	[INITIATIVE]: 0,
 	[SPEED]: 30,
-	hitPoints: {
+	[HIT_POINTS]: {
 		[MAX_HIT_POINTS]: 1,
 		[CURRENT_HIT_POINTS]: 1,
 		[TEMP_HIT_POINTS]: 0,
 	},
-	hitDice: {
-		[CURRENT_HIT_DICE]: 1,
+	[HIT_DICE]: {
+		[CURRENT_HIT_DICE_COUNT]: 1,
 		[TOTAL_HIT_DICE_COUNT]: 1,
 		[TOTAL_HIT_DICE_TYPE]: 8,
 	},
-	deathSaves: {
+	[DEATH_SAVES]: {
 		[SUCCESSFUL_DEATH_SAVES]: {
 			total: 3,
 			saves: [],
