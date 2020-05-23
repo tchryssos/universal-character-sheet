@@ -1,6 +1,6 @@
 import buildOptionsFromStrings from 'util/buildOptionsFromStrings'
 
-export const defaultValue = 'default'
+export const DEFAULT = 'default'
 
 // START - BIOGRAPHICAL - START
 export const CHAR_NAME = 'charName'
@@ -55,17 +55,43 @@ export const WIS = 'wisdom'
 export const INT = 'intelligence'
 export const CHA = 'charisma'
 
-export const attributes = [
+export const ABILITIES = [
 	STR, DEX, CON, WIS, INT, CHA,
 ]
 
-export const attributeOptions = buildOptionsFromStrings(attributes)
+export const ABILITY_OPTIONS = buildOptionsFromStrings(ABILITIES)
 // END - ABILITIES - END
 
 // START - MISC GAME - START
 export const INSPIRATION = 'inspiration'
 export const PROF_BONUS = 'profBonus'
 export const PAS_WIS = 'pasWis'
+export const DICE = [
+	{
+		label: 'd4',
+		value: 4,
+	},
+	{
+		label: 'd6',
+		value: 6,
+	},
+	{
+		label: 'd8',
+		value: 8,
+	},
+	{
+		label: 'd10',
+		value: 10,
+	},
+	{
+		label: 'd12',
+		value: 12,
+	},
+	{
+		label: 'd20',
+		value: 20,
+	},
+]
 // END - MISC GAME - END
 
 // START - SKILLS - START
@@ -110,16 +136,16 @@ export const SPELL_SAVE = 'spellSave'
 export const MAGIC_ATTACK_BONUS = 'magicAttackBonus'
 export const PSIONICS = 'psionics'
 
-export const defaultAttackDamage = {
+export const DEFAULT_ATTACK_DAM = {
 	damageDiceCount: 1,
 	damageDiceType: 8,
-	damageType: defaultValue,
+	damageType: DEFAULT,
 }
 
-export const defaultAttack = {
+export const DEFAULT_ATTACK = {
 	name: '',
 	attackBonus: 0,
-	damage: [defaultAttackDamage],
+	damage: [DEFAULT_ATTACK_DAM],
 	damageBonus: 0,
 }
 // END - ATTACKS - END
