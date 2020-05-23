@@ -1,5 +1,6 @@
 import slice from 'ramda/src/slice'
+import propOr from 'ramda/src/propOr'
 
 export default (string = '') => (
-	`${string[0].toUpperCase()}${slice(1, Infinity, string)}`
+	`${propOr('', 0, string).toUpperCase()}${slice(1, Infinity, string)}`
 )
