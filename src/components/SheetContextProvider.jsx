@@ -10,6 +10,7 @@ const defaultData = {}
 export default ({ children }) => {
 	const [formVals, setFormVals] = useState(defaultData)
 	const [gameType, setGameType] = useState(AMAZING_ADVENTURES)
+	console.log(formVals)
 
 	useEffect(() => {
 		setFormVals(propOr(defaultData, gameType, data))

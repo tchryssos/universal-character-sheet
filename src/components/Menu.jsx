@@ -56,7 +56,7 @@ export default () => {
 	const classes = useStyles()
 	const { setGameType, gameType } = useContext(SheetContext)
 	const [menuOpen, setMenuOpen] = useState(false)
-	const onGameTypeChange = (v) => setGameType(v)
+	const onGameTypeChange = (e) => setGameType(e.target.value)
 	return (
 		<div className={classes.menuWrapper}>
 			<Button label="Menu" onClick={() => setMenuOpen(true)} />
