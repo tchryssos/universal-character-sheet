@@ -8,43 +8,12 @@ export const CHAR_CLASS = 'charClass'
 export const LEVEL = 'level'
 export const ALIGNMENT = 'alignment'
 export const ALIGNMENTS = [
-	{
-		label: 'Lawful Good',
-		value: 'lawfulGood',
-	},
-	{
-		label: 'Neutral Good',
-		value: 'neutralGood',
-	},
-	{
-		label: 'Chaotic Good',
-		value: 'chaoticGood',
-	},
-	{
-		label: 'Lawful Neutral',
-		value: 'lawfulNeutral',
-	},
-	{
-		label: 'True Neutral',
-		value: 'trueNeutral',
-	},
-	{
-		label: 'Chaotic Neutral',
-		value: 'chaoticNeutral',
-	},
-	{
-		label: 'Lawful Evil',
-		value: 'lawfulEvil',
-	},
-	{
-		label: 'Neutral Evil',
-		value: 'neutralEvil',
-	},
-	{
-		label: 'Chaotic Evil',
-		value: 'chaoticEvil',
-	},
+	'lawfulGood', 'neutralGood', 'chaoticGood',
+	'lawfulNeutral', 'trueNeutral', 'chaoticNeutral',
+	'lawfulEvil', 'neutralEvil', 'chaoticEvil',
 ]
+export const ALIGNMENT_OPTIONS = buildOptionsFromStrings(ALIGNMENTS)
+
 // END - BIOGRAPHICAL - END
 
 // START - ABILITIES - START
