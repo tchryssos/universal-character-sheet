@@ -219,7 +219,7 @@ export const schema = {
 		defaultAttack,
 	],
 	[CASTING_ABILITY]: defaultValue,
-	[SPELL_SAVE]: 0,
+	[SPELL_SAVE]: 8,
 	[MAGIC_ATTACK_BONUS]: 0,
 	[PSIONICS]: 0,
 }

@@ -5,8 +5,7 @@ import {
 	PERCEPTION, PERFORMANCE, PERSUASION, RELIGION, SCIENCE,
 	SLEIGHT_OF_HAND, STEALTH, SURVIVAL,
 } from 'constants/schema'
-import map from 'ramda/src/map'
-import slice from 'ramda/src/slice'
+import buildOptionsFromStrings from 'util/buildOptionsFromStrings'
 
 export const alignments = [
 	{
@@ -106,13 +105,7 @@ export const attributes = [
 	STR, DEX, CON, WIS, INT, CHA,
 ]
 
-export const attributeOptions = map(
-	(att) => ({
-		value: att,
-		label: `${att[0].toUpperCase()}${slice(1, Infinity, att)}`,
-	}),
-	attributes,
-)
+export const attributeOptions = buildOptionsFromStrings(attributes)
 
 export const skills = [
 	ACROBATICS, ANIMAL_HANDLING, ATHLETICS, DECEPTION, HISTORY,

@@ -96,6 +96,7 @@ module.exports = (env, argv) => {
 				util: path.join(__dirname, 'src/util'),
 				contexts: path.join(__dirname, 'src/contexts'),
 				effects: path.join(__dirname, 'src/effects'),
+				data: path.join(__dirname, 'src/data'),
 			},
 		},
 		stats: {

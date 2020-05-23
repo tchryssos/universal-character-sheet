@@ -29,7 +29,7 @@ import {
 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
 	AC, CURRENT_HIT_POINTS, MAX_HIT_POINTS, TEMP_HIT_POINTS,
 	SPEED, TOTAL_HIT_DICE_COUNT, TOTAL_HIT_DICE_TYPE, CURRENT_HIT_DICE,
-	CASTING_ABILITY,
+	CASTING_ABILITY, SPELL_SAVE,
 
 } from 'constants/schema'
 
@@ -158,6 +158,11 @@ const Home = () => {
 						options={attributeOptions}
 						label="Casting Ability"
 						formPath={[CASTING_ABILITY]}
+					/>
+					<NumberInput
+						readOnly
+						label="Spell Save DC"
+						formPath={[SPELL_SAVE]}
 					/>
 				</form>
 				<HashViewer string={hash} />
