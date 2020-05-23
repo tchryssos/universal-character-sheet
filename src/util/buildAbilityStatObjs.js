@@ -1,5 +1,5 @@
 import forEach from 'ramda/src/forEach'
-import { VAL, MOD, PROF } from 'data/shared'
+import { VAL, MOD, PROF } from 'data/bank'
 
 export default (abilities = []) => {
 	const obj = {}
