@@ -13,7 +13,6 @@ export const ALIGNMENTS = [
 	'lawfulEvil', 'neutralEvil', 'chaoticEvil',
 ]
 export const ALIGNMENT_OPTIONS = buildOptionsFromStrings(ALIGNMENTS)
-
 // END - BIOGRAPHICAL - END
 
 // START - ABILITIES - START

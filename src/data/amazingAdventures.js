@@ -1,18 +1,141 @@
 import {
-	ABILITIES,
+	ABILITIES, ABILITY, PROF, DEX, WIS,
+	STR, CHA, INT, CON, CHAR_NAME,
+	ACROBATICS, ANIMAL_HANDLING, ATHLETICS, DECEPTION, HISTORY,
+	INSIGHT, INTIMIDATION, INVESTIGATION, MEDICINE, NATURE,
+	PERCEPTION, PERFORMANCE, PERSUASION, RELIGION, SCIENCE,
+	SLEIGHT_OF_HAND, STEALTH, SURVIVAL, CHAR_CLASS, LEVEL,
+	ALIGNMENT, DEFAULT, INSPIRATION, PROF_BONUS, PAS_WIS,
+	AC, INITIATIVE, SPEED, MAX_HIT_POINTS, CURRENT_HIT_POINTS,
+	TEMP_HIT_POINTS, CURRENT_HIT_DICE, TOTAL_HIT_DICE_COUNT, TOTAL_HIT_DICE_TYPE,
+	SUCCESSFUL_DEATH_SAVES, FAILED_DEATH_SAVES, ATTACKS, CASTING_ABILITY,
+	SPELL_SAVE, MAGIC_ATTACK_BONUS, PSIONICS,
+} from 'data/shared'
+import buildAbilityStatObjs from 'util/buildAbilityStatObjs'
+import { DEFAULT_ATTACK } from './shared'
+
+const skillList = [
 	ACROBATICS, ANIMAL_HANDLING, ATHLETICS, DECEPTION, HISTORY,
 	INSIGHT, INTIMIDATION, INVESTIGATION, MEDICINE, NATURE,
 	PERCEPTION, PERFORMANCE, PERSUASION, RELIGION, SCIENCE,
 	SLEIGHT_OF_HAND, STEALTH, SURVIVAL,
-} from 'data/shared'
-import buildAbilityStatObjs from 'util/buildAbilityStatObjs'
+]
 
 export default {
+	[CHAR_NAME]: '',
+	[CHAR_CLASS]: '',
+	[LEVEL]: 1,
+	[ALIGNMENT]: DEFAULT,
 	abilities: { ...buildAbilityStatObjs(ABILITIES) },
-	skills: [
-		ACROBATICS, ANIMAL_HANDLING, ATHLETICS, DECEPTION, HISTORY,
-		INSIGHT, INTIMIDATION, INVESTIGATION, MEDICINE, NATURE,
-		PERCEPTION, PERFORMANCE, PERSUASION, RELIGION, SCIENCE,
-		SLEIGHT_OF_HAND, STEALTH, SURVIVAL,
+	[INSPIRATION]: 0,
+	[PROF_BONUS]: 2,
+	[PAS_WIS]: 10,
+	skillList,
+	skills: {
+		[ACROBATICS]: {
+			[ABILITY]: DEX,
+			[PROF]: false,
+		},
+		[ANIMAL_HANDLING]: {
+			[ABILITY]: WIS,
+			[PROF]: false,
+		},
+		[ATHLETICS]: {
+			[ABILITY]: STR,
+			[PROF]: false,
+		},
+		[DECEPTION]: {
+			[ABILITY]: CHA,
+			[PROF]: false,
+		},
+		[HISTORY]: {
+			[ABILITY]: INT,
+			[PROF]: false,
+		},
+		[INSIGHT]: {
+			[ABILITY]: WIS,
+			[PROF]: false,
+		},
+		[INTIMIDATION]: {
+			[ABILITY]: CHA,
+			[PROF]: false,
+		},
+		[INVESTIGATION]: {
+			[ABILITY]: INT,
+			[PROF]: false,
+		},
+		[MEDICINE]: {
+			[ABILITY]: WIS,
+			[PROF]: false,
+		},
+		[NATURE]: {
+			[ABILITY]: INT,
+			[PROF]: false,
+		},
+		[PERCEPTION]: {
+			[ABILITY]: WIS,
+			[PROF]: false,
+		},
+		[PERFORMANCE]: {
+			[ABILITY]: CHA,
+			[PROF]: false,
+		},
+		[PERSUASION]: {
+			[ABILITY]: CHA,
+			[PROF]: false,
+		},
+		[RELIGION]: {
+			[ABILITY]: CHA,
+			[PROF]: false,
+		},
+		[SCIENCE]: {
+			[ABILITY]: INT,
+			[PROF]: false,
+		},
+		[SLEIGHT_OF_HAND]: {
+			[ABILITY]: DEX,
+			[PROF]: false,
+		},
+		[STEALTH]: {
+			[ABILITY]: DEX,
+			[PROF]: false,
+		},
+		[SURVIVAL]: {
+			[ABILITY]: WIS,
+			[PROF]: false,
+		},
+	},
+	// COMBAT STATS
+	[AC]: 10,
+	[INITIATIVE]: 0,
+	[SPEED]: 30,
+	hitPoints: {
+		[MAX_HIT_POINTS]: 1,
+		[CURRENT_HIT_POINTS]: 1,
+		[TEMP_HIT_POINTS]: 0,
+	},
+	hitDice: {
+		[CURRENT_HIT_DICE]: 1,
+		[TOTAL_HIT_DICE_COUNT]: 1,
+		[TOTAL_HIT_DICE_TYPE]: 8,
+	},
+	deathSaves: {
+		[SUCCESSFUL_DEATH_SAVES]: {
+			total: 3,
+			saves: [],
+		},
+		[FAILED_DEATH_SAVES]: {
+			total: 3,
+			saves: [],
+		},
+	},
+
+	// ATTACKS
+	[ATTACKS]: [
+		DEFAULT_ATTACK,
 	],
+	[CASTING_ABILITY]: DEFAULT,
+	[SPELL_SAVE]: 8,
+	[MAGIC_ATTACK_BONUS]: 0,
+	[PSIONICS]: 0,
 }
