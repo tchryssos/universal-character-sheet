@@ -28,6 +28,7 @@ const useStyles = createUseStyles({
 		transition: 'transform 0.3s',
 		transform: 'translateX(-300px)',
 		backgroundColor: forest,
+		borderRadius: 4,
 	},
 	visibleMenu: {
 		transform: 'translateX(0)',
