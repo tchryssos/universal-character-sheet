@@ -7,7 +7,7 @@ import capitalize from 'util/capitalize'
 const lowercaseWords = ['of', 'and', 'to', 'a']
 
 export default (string) => {
-	let wordChunks = match(/[A-Z]\w+/g, string)
+	let wordChunks = match(/[A-Z]?[a-z0-9]+/g, string)
 	wordChunks = map(
 		(word) => {
 			const lcWord = word.toLowerCase()

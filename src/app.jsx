@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import {
-	BrowserRouter, Route, Switch, withRouter,
+	BrowserRouter, Route, Switch,
 } from 'react-router-dom'
 import { createUseStyles } from 'react-jss'
 import SheetContextProvider from 'components/SheetContextProvider'
@@ -45,7 +45,7 @@ const useStyles = createUseStyles(() => {
 	}
 })
 
-const App = ({ location }) => {
+const App = () => {
 	// Create global effects or state here
 	// with access to router location
 	useStyles()
@@ -59,11 +59,9 @@ const App = ({ location }) => {
 	)
 }
 
-const RouterApp = withRouter(props => <App {...props} />)
-
 render(
 	<BrowserRouter>
-		<RouterApp />
+		<App />
 	</BrowserRouter>,
 	document.getElementById('app'),
 )
