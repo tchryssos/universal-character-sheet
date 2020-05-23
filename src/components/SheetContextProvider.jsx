@@ -7,7 +7,7 @@ import { AMAZING_ADVENTURES } from 'constants/games'
 import data from 'data'
 
 const defaultData = {}
-export default ({ children }) => {
+const SheetContextProvider =  ({ children }) => {
 	const [formVals, setFormVals] = useState(defaultData)
 	const [gameType, setGameType] = useState(AMAZING_ADVENTURES)
 
@@ -27,3 +27,5 @@ export default ({ children }) => {
 		</SheetContext.Provider>
 	)
 }
+
+export default SheetContextProvider

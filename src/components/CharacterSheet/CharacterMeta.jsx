@@ -6,7 +6,6 @@ import NumberInput from 'components/NumberInput'
 import SelectInput from 'components/SelectInput'
 
 import SheetContext from 'contexts/sheetContext'
-import orNull from 'util/orNull'
 import buildOptionsFromStrings from 'util/buildOptionsFromStrings'
 
 import {

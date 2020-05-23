@@ -1,7 +1,3 @@
-import { useEffect } from 'react'
-import mergeDeepRight from 'ramda/src/mergeDeepRight'
-import prop from 'ramda/src/prop'
-
 import {
 	ABILITIES, ABILITY, PROF, DEX, WIS,
 	STR, CHA, INT, CHAR_NAME,
@@ -18,7 +14,7 @@ import {
 	DEATH_SAVES, TRAD_ALIGNMENTS, ALIGNMENTS,
 } from 'data/bank'
 import buildAbilityStatObjs from 'util/buildAbilityStatObjs'
-import profBonusCalc from 'util/profBonusCalc'
+import levelUp from 'effects/amazingAdventures/levelUp'
 
 const skillList = [
 	ACROBATICS, ANIMAL_HANDLING, ATHLETICS, DECEPTION, HISTORY,
@@ -27,26 +23,12 @@ const skillList = [
 	SLEIGHT_OF_HAND, STEALTH, SURVIVAL,
 ]
 
-const levelUpFunc = (formVals, setFormVals, level) => {
-	useEffect(() => {
-		setFormVals(
-			mergeDeepRight(
-				formVals,
-				{
-					[PROF_BONUS]: profBonusCalc(level),
-					[TOTAL_HIT_DICE_COUNT]: prop(TOTAL_HIT_DICE_COUNT, formVals) + 1,
-				},
-			),
-		)
-	}, [level])
-}
-
 export const schema = {
 	// META
 	[CHAR_NAME]: '',
 	[CHAR_CLASS]: '',
 	[LEVEL]: 1,
-	[LEVEL_UP_FUNC]: levelUpFunc,
+	[LEVEL_UP_FUNC]: levelUp,
 	[ALIGNMENT]: DEFAULT,
 	[ALIGNMENTS]: TRAD_ALIGNMENTS,
 
