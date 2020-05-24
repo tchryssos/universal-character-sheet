@@ -7,7 +7,6 @@ import length from 'ramda/src/length'
 import remove from 'ramda/src/remove'
 import assoc from 'ramda/src/assoc'
 import append from 'ramda/src/append'
-import orNull from 'util/orNull'
 
 import TextInput from 'components/TextInput'
 import NumberInput from 'components/NumberInput'
@@ -18,10 +17,11 @@ import DiceInput from 'components/DiceInput'
 import SelectInput from 'components/SelectInput'
 
 import mapWithIndex from 'util/mapWithIndex'
+import buildOptionsFromStrings from 'util/buildOptionsFromStrings'
+import orNull from 'util/orNull'
 
 import SheetContext from 'contexts/sheetContext'
-import { ATTACKS, defaultAttack } from 'constants/schema'
-import { damageTypes } from 'constants/game'
+import { ATTACKS, DEFAULT_ATTACK, DAMAGE_TYPES } from 'data/bank'
 import { black } from 'constants/styles/colors'
 
 const useStyles = createUseStyles({
@@ -158,7 +158,7 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 					{mapWithIndex(
 						(damage, dIndex) => (
 							<SelectInput
-								options={damageTypes}
+								options={buildOptionsFromStrings(prop(DAMAGE_TYPES, formVals))}
 								formPath={[ATTACKS, index, 'damage', dIndex, 'damageType']}
 							/>
 						),
@@ -186,20 +186,21 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 
 const Attacks = () => {
 	const classes = useStyles()
-	const formVals = useContext(SheetContext)
-	const { setFormVals } = formVals
+	const { formVals, setFormVals } = useContext(SheetContext)
 	const attacks = prop(ATTACKS, formVals)
 
 	const addAttack = () => setFormVals(
 		assoc(
 			ATTACKS,
 			append(
-				defaultAttack,
+				DEFAULT_ATTACK,
 				attacks,
 			),
 		),
 	)
-	return (
+
+	return orNull(
+		attacks,
 		<Label label="Attacks" column className={classes.labelWrapper}>
 			<div className={classes.attacksWrapper}>
 				<HeaderRow classes={classes} />
@@ -213,7 +214,8 @@ const Attacks = () => {
 					label="+ Add New Attack"
 				/>
 			</div>
-		</Label>
+		</Label>,
+		true,
 	)
 }
 

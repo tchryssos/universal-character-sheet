@@ -152,7 +152,7 @@ const CharacterSheet = () => {
 						formPath={[CURRENT_HIT_DICE]}
 						min={0}
 					/> */}
-					<DeathSaves />
+					{/* <DeathSaves /> */}
 					<Attacks />
 					<SelectInput
 						options={attributeOptions}

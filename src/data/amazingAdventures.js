@@ -12,6 +12,7 @@ import {
 	SPELL_SAVE, MAGIC_ATTACK_BONUS, PSIONICS, DEFAULT_ATTACK, LEVEL_UP_FUNC,
 	ABILITY_SCORES, SKILLS, SKILL_LIST, HIT_POINTS, HIT_DICE,
 	DEATH_SAVES, TRAD_ALIGNMENTS, ALIGNMENTS, ABILITY_LIST,
+	DAMAGE_TYPES, TRAD_DAMAGE_TYPES,
 } from 'data/bank'
 import buildAbilityStatObjs from 'util/buildAbilityStatObjs'
 import levelUp from 'effects/amazingAdventures/levelUp'
@@ -144,6 +145,7 @@ export const schema = {
 	[ATTACKS]: [
 		DEFAULT_ATTACK,
 	],
+	[DAMAGE_TYPES]: TRAD_DAMAGE_TYPES,
 	[CASTING_ABILITY]: DEFAULT,
 	[SPELL_SAVE]: 8,
 	[MAGIC_ATTACK_BONUS]: 0,

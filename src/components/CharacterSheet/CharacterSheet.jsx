@@ -34,6 +34,7 @@ export default () => {
 	const classes = useStyles()
 	const { formVals, setFormVals } = useContext(SheetContext)
 
+	// Run level up effect, if one exists
 	const level = prop(LEVEL, formVals)
 	useEffect(() => {
 		propOr(F, LEVEL_UP_FUNC, formVals)(formVals, setFormVals, level)

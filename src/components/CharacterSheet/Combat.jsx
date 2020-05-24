@@ -4,6 +4,7 @@ import IconStat from 'components/IconStat'
 import DiceInput from 'components/DiceInput'
 import NumberInput from 'components/NumberInput'
 import DeathSaves from 'components/CharacterSheet/DeathSaves'
+import Attacks from 'components/Attacks'
 
 import Heart from 'static/svg/heart.svg'
 import HalfHeart from 'static/svg/halfHeart.svg'
@@ -58,6 +59,7 @@ export const Combat = () => (
 			min={0}
 		/>
 		<DeathSaves />
+		<Attacks />
 	</>
 )
 

@@ -121,6 +121,13 @@ export const DEFAULT_ATTACK = {
 	damage: [DEFAULT_ATTACK_DAM],
 	damageBonus: 0,
 }
+
+export const DAMAGE_TYPES = 'damageTypes' // schema key
+export const TRAD_DAMAGE_TYPES = [
+	'acid', 'bludgeoning', 'cold', 'fire', 'force',
+	'lightning', 'necrotic', 'piercing', 'poison', 'psychic',
+	'radiant', 'slashing', 'thunder',
+]
 // END - ATTACKS - END
 
 // START - MODIFIERS - START
