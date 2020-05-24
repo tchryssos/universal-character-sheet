@@ -137,10 +137,12 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 				<div className={clsx(classes.rowBox, classes.damDice)}>
 					{mapWithIndex(
 						(damage, dIndex) => (
-							<DiceInput
-								diceCountPath={[ATTACKS, index, 'damage', dIndex, 'damageDiceCount']}
-								diceTypePath={[ATTACKS, index, 'damage', dIndex, 'damageDiceType']}
-							/>
+							<div key={`${index}-${dIndex}-dice`}>
+								<DiceInput
+									diceCountPath={[ATTACKS, index, 'damage', dIndex, 'damageDiceCount']}
+									diceTypePath={[ATTACKS, index, 'damage', dIndex, 'damageDiceType']}
+								/>
+							</div>
 						),
 						path([ATTACKS, index, 'damage'], formVals),
 					)}
@@ -157,10 +159,12 @@ const MappedAttacks = ({ attacks, formVals, classes }) => mapWithIndex(
 				<div className={clsx(classes.rowBox, classes.damType)}>
 					{mapWithIndex(
 						(damage, dIndex) => (
-							<SelectInput
-								options={buildOptionsFromStrings(prop(DAMAGE_TYPES, formVals))}
-								formPath={[ATTACKS, index, 'damage', dIndex, 'damageType']}
-							/>
+							<div key={`${index}-${dIndex}-damage`}>
+								<SelectInput
+									options={buildOptionsFromStrings(prop(DAMAGE_TYPES, formVals))}
+									formPath={[ATTACKS, index, 'damage', dIndex, 'damageType']}
+								/>
+							</div>
 						),
 						path([ATTACKS, index, 'damage'], formVals),
 					)}
