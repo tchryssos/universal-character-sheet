@@ -2,17 +2,20 @@ import React, { useContext } from 'react'
 import { createUseStyles } from 'react-jss'
 import map from 'ramda/src/map'
 import path from 'ramda/src/path'
+import prop from 'ramda/src/prop'
 
 import SheetContext from 'contexts/sheetContext'
-import { skills } from 'constants/game'
 import {
-	PROF, ABILITY, MOD,
-} from 'constants/schema'
+	PROF, ABILITY, MOD, SKILL_LIST, SKILLS,
+} from 'data/bank'
 
 import NumberInput from 'components/NumberInput'
 import CheckboxInput from 'components/CheckboxInput'
 import Label from 'components/Label'
 import Body from 'components/typography/Body'
+
+import orNull from 'util/orNull'
+import capitalStringFromCamel from 'util/capitalStringFromCamel'
 
 const useStyles = createUseStyles({
 	skillsWrapper: {
@@ -28,52 +31,49 @@ const useStyles = createUseStyles({
 	},
 	nameBox: {
 		flex: 1,
-		textTransform: 'capitalize',
 		marginRight: 8,
 	},
 })
 
-const SkillRow = ({
-	skill, formVals, classes,
-}) => (
-	<div className={classes.skillRow}>
-		<div className={classes.nameBox}>
-			<Body>{skill}</Body>
+const SkillRows = ({
+	skills, formVals, classes,
+}) => map(
+	(skill) => (
+		<div className={classes.skillRow} key={skill}>
+			<div className={classes.nameBox}>
+				<Body>{capitalStringFromCamel(skill)}</Body>
+			</div>
+			<NumberInput
+				readOnly
+				min={-5}
+				formPath={[path([SKILLS, skill, ABILITY], formVals), MOD]}
+			/>
+			<CheckboxInput
+				formPath={[SKILLS, skill, PROF]}
+			/>
 		</div>
-		<NumberInput
-			readOnly
-			min={-5}
-			formPath={[path([skill, ABILITY], formVals), MOD]}
-		/>
-		<CheckboxInput
-			formPath={[skill, PROF]}
-		/>
-	</div>
+	),
+	skills,
 )
 
 const Skills = () => {
 	const classes = useStyles()
-	const formVals = useContext(SheetContext)
-
-	return (
+	const { formVals } = useContext(SheetContext)
+	const skills = prop(SKILL_LIST, formVals)
+	return orNull(
+		skills,
 		<div className={classes.skillsWrapper}>
-			<Label key="skills" label="Skills" column>
+			<Label label="Skills" column>
 				<div className={classes.table}>
-					{
-						map(
-							(skill) => (
-								<SkillRow
-									key={skill}
-									skill={skill}
-									formVals={formVals}
-									classes={classes}
-								/>
-							), skills,
-						)
-					}
+					<SkillRows
+						skills={skills}
+						formVals={formVals}
+						classes={classes}
+					/>
 				</div>
 			</Label>
-		</div>
+		</div>,
+		true,
 	)
 }
 

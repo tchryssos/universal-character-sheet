@@ -1,5 +1,3 @@
-import buildOptionsFromStrings from 'util/buildOptionsFromStrings'
-
 export const DEFAULT = 'default'
 
 // START - BIOGRAPHICAL - START

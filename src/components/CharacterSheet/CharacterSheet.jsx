@@ -6,10 +6,14 @@ import F from 'ramda/src/F'
 
 import CharacterMeta from 'components/CharacterSheet/CharacterMeta'
 import AbilityScores from 'components/CharacterSheet/AbilityScores'
+import NumberInput from 'components/NumberInput'
+import Skills from 'components/CharacterSheet/Skills'
 
 import SheetContext from 'contexts/sheetContext'
 
-import { LEVEL_UP_FUNC, LEVEL } from 'data/bank'
+import {
+	LEVEL_UP_FUNC, LEVEL, INSPIRATION, PROF_BONUS, PAS_WIS,
+} from 'data/bank'
 
 const useStyles = createUseStyles({
 	wrapper: {
@@ -39,6 +43,24 @@ export default () => {
 			<form className={classes.form}>
 				<CharacterMeta />
 				<AbilityScores />
+				<NumberInput
+					label="Inpsiration"
+					formPath={[INSPIRATION]}
+					min={0}
+				/>
+				<NumberInput
+					label="Proficiency Bonus"
+					formPath={[PROF_BONUS]}
+					min={0}
+					readOnly
+				/>
+				<NumberInput
+					label="Passive Perception"
+					formPath={[PAS_WIS]}
+					min={0}
+					readOnly
+				/>
+				<Skills />
 			</form>
 		</div>
 	)

@@ -3,7 +3,6 @@ import { createUseStyles } from 'react-jss'
 import path from 'ramda/src/path'
 import assocPath from 'ramda/src/assocPath'
 import prop from 'ramda/src/prop'
-import keys from 'ramda/src/keys'
 import clsx from 'clsx'
 
 import SheetContext from 'contexts/sheetContext'

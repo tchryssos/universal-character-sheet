@@ -76,7 +76,7 @@ const CharacterSheet = () => {
 		<SheetContext.Provider value={{ ...formVals, setFormVals }}>
 			<div className={classes.wrapper}>
 				<form className={classes.form}>
-					<TextInput
+					{/* <TextInput
 						label="Character Name"
 						formPath={[CHAR_NAME]}
 					/>
@@ -95,8 +95,8 @@ const CharacterSheet = () => {
 						formPath={[ALIGNMENT]}
 						options={alignments}
 					/>
-					<AbilityScores />
-					<NumberInput
+					<AbilityScores /> */}
+					{/* <NumberInput
 						label="Inpsiration"
 						formPath={[INSPIRATION]}
 						min={0}
@@ -112,7 +112,7 @@ const CharacterSheet = () => {
 						formPath={[PAS_WIS]}
 						min={0}
 						readOnly
-					/>
+					/> */}
 					<Skills />
 					<IconStat
 						label="AC"
