@@ -23,15 +23,15 @@ import Shield from 'static/svg/shield.svg'
 import HeartStack from 'static/svg/heartStack.svg'
 import Run from 'static/svg/run.svg'
 
-import { alignments, attributeOptions } from 'constants/game'
-import {
-	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
-	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
-	AC, CURRENT_HIT_POINTS, MAX_HIT_POINTS, TEMP_HIT_POINTS,
-	SPEED, TOTAL_HIT_DICE_COUNT, TOTAL_HIT_DICE_TYPE, CURRENT_HIT_DICE,
-	CASTING_ABILITY, SPELL_SAVE,
+// import { alignments, attributeOptions } from 'constants/game'
+// import {
+// 	schema, CHAR_NAME, CHAR_CLASS, LEVEL, ALIGNMENT,
+// 	INSPIRATION, PROF_BONUS, PAS_WIS, WIS, PROF, MOD,
+// 	AC, CURRENT_HIT_POINTS, MAX_HIT_POINTS, TEMP_HIT_POINTS,
+// 	SPEED, TOTAL_HIT_DICE_COUNT, TOTAL_HIT_DICE_TYPE, CURRENT_HIT_DICE,
+// 	CASTING_ABILITY, SPELL_SAVE,
 
-} from 'constants/schema'
+// } from 'constants/schema'
 
 const useStyles = createUseStyles({
 	wrapper: {
@@ -113,14 +113,14 @@ const CharacterSheet = () => {
 						min={0}
 						readOnly
 					/> */}
-					<Skills />
-					<IconStat
+					{/* <Skills /> */}
+					{/* <IconStat
 						label="AC"
 						icon={Shield}
 						min={0}
 						formPath={[AC]}
-					/>
-					<IconStat
+					/> */}
+					{/* <IconStat
 						label="Current HP"
 						icon={HalfHeart}
 						formPath={[CURRENT_HIT_POINTS]}
@@ -151,7 +151,7 @@ const CharacterSheet = () => {
 						label="Remaining Hit Dice"
 						formPath={[CURRENT_HIT_DICE]}
 						min={0}
-					/>
+					/> */}
 					<DeathSaves />
 					<Attacks />
 					<SelectInput

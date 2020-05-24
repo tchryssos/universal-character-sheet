@@ -8,6 +8,7 @@ import CharacterMeta from 'components/CharacterSheet/CharacterMeta'
 import AbilityScores from 'components/CharacterSheet/AbilityScores'
 import NumberInput from 'components/NumberInput'
 import Skills from 'components/CharacterSheet/Skills'
+import Combat from 'components/CharacterSheet/Combat'
 
 import SheetContext from 'contexts/sheetContext'
 
@@ -61,6 +62,7 @@ export default () => {
 					readOnly
 				/>
 				<Skills />
+				<Combat />
 			</form>
 		</div>
 	)

@@ -5,7 +5,7 @@ import NumberInput from 'components/NumberInput'
 import SelectInput from 'components/SelectInput'
 import Label from 'components/Label'
 
-import { dice } from 'constants/game'
+import { DICE } from 'data/bank'
 
 const useStyles = createUseStyles({
 	diceInputWrapper: {
@@ -30,7 +30,7 @@ const DiceInput = ({ label, diceCountPath, diceTypePath }) => {
 				/>
 				<SelectInput
 					formPath={diceTypePath}
-					options={dice}
+					options={DICE}
 					className={classes.input}
 				/>
 			</div>

@@ -60,7 +60,6 @@ const Skills = () => {
 	const classes = useStyles()
 	const { formVals } = useContext(SheetContext)
 	const skills = prop(SKILL_LIST, formVals)
-	console.log(formVals[SKILLS])
 	return orNull(
 		skills,
 		<div className={classes.skillsWrapper}>
