@@ -41,6 +41,7 @@ const Saves = ({ formVals, formPath, classes }) => {
 					times(
 						(i) => (
 							<CheckboxInput
+								visiblePath={[...formPath, 'saves']}
 								formPath={[...formPath, 'saves', i]}
 								key={`${i}-${deathSaveType}`}
 							/>

@@ -17,7 +17,7 @@ import {
 	TOTAL_HIT_DICE_TYPE,
 } from 'data/bank'
 
-export default () => (
+export const Combat = () => (
 	<>
 		<IconStat
 			label="AC"
@@ -60,3 +60,5 @@ export default () => (
 		<DeathSaves />
 	</>
 )
+
+export default Combat

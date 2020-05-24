@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
 })
 
 const CheckboxInput = ({
-	setFormVals, formVals, formPath, label,
+	setFormVals, formVals, formPath, label, visiblePath,
 }) => {
 	const classes = useStyles()
 	return (
@@ -18,6 +18,7 @@ const CheckboxInput = ({
 			type="checkbox"
 			formVals={formVals}
 			formPath={formPath}
+			visiblePath={visiblePath}
 			setFormVals={setFormVals}
 			label={label}
 		/>

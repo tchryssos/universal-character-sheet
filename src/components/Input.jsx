@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
 })
 
 const Input = ({
-	formPath = [], label, min, max,
+	formPath = [], label, min, max, visiblePath = [],
 	readOnly, type, labelColumn, className,
 }) => {
 	const classes = useStyles()
@@ -29,7 +29,7 @@ const Input = ({
 	}
 
 	return orNull(
-		path(formPath, formVals),
+		path(formPath, formVals) || path(visiblePath, formVals),
 		<Label label={label} column={labelColumn}>
 			<input
 				type={type}
