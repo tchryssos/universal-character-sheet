@@ -4,10 +4,11 @@ import clsx from 'clsx'
 import assocPath from 'ramda/src/assocPath'
 import path from 'ramda/src/path'
 import join from 'ramda/src/join'
-import prop from 'ramda/src/prop'
 
 import SheetContext from 'contexts/sheetContext'
 import Label from 'components/Label'
+
+import orNull from 'util/orNull'
 
 const useStyles = createUseStyles({
 	option: {
@@ -31,11 +32,11 @@ const SelectInput = ({
 	formPath = [], label, options, className,
 }) => {
 	const classes = useStyles()
-	const formVals = useContext(SheetContext)
-	const setFormVals = prop('setFormVals', formVals)
+	const { formVals, setFormVals } = useContext(SheetContext)
 	const onChange = (e) => setFormVals(assocPath(formPath, e.target.value, formVals))
 
-	return (
+	return orNull(
+		path(formPath, formVals),
 		<Label label={label}>
 			<select
 				className={clsx(
@@ -48,7 +49,8 @@ const SelectInput = ({
 				<option value="default" disabled>-- Choose One --</option>
 				<Options options={options} classes={classes} />
 			</select>
-		</Label>
+		</Label>,
+		true,
 	)
 }
 
