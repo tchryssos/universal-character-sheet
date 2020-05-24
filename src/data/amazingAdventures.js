@@ -12,10 +12,11 @@ import {
 	SPELL_SAVE, MAGIC_ATTACK_BONUS, PSIONICS, DEFAULT_ATTACK, LEVEL_UP_FUNC,
 	ABILITY_SCORES, SKILLS, SKILL_LIST, HIT_POINTS, HIT_DICE,
 	DEATH_SAVES, TRAD_ALIGNMENTS, ALIGNMENTS, ABILITY_LIST,
-	DAMAGE_TYPES, TRAD_DAMAGE_TYPES,
+	DAMAGE_TYPES, TRAD_DAMAGE_TYPES, PAS_WIS_FUNC,
 } from 'data/bank'
 import buildAbilityStatObjs from 'util/buildAbilityStatObjs'
 import levelUp from 'effects/amazingAdventures/levelUp'
+import updatePassiveWisdom from 'effects/amazingAdventures/updatePassiveWisdom'
 
 const skillList = [
 	ACROBATICS, ANIMAL_HANDLING, ATHLETICS, DECEPTION, HISTORY,
@@ -38,6 +39,7 @@ export const schema = {
 	[INSPIRATION]: 0,
 	[PROF_BONUS]: 2,
 	[PAS_WIS]: 10,
+	[PAS_WIS_FUNC]: updatePassiveWisdom,
 
 	// SKILLS
 	[SKILL_LIST]: skillList,

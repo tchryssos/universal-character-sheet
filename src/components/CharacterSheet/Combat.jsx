@@ -21,7 +21,7 @@ import SheetContext from 'contexts/sheetContext'
 import {
 	HIT_POINTS, CURRENT_HIT_POINTS, CURRENT_HIT_DICE_COUNT, HIT_DICE,
 	MAX_HIT_POINTS, TEMP_HIT_POINTS, SPEED, AC, TOTAL_HIT_DICE_COUNT,
-	TOTAL_HIT_DICE_TYPE, CASTING_ABILITY, ABILITY_LIST,
+	TOTAL_HIT_DICE_TYPE, CASTING_ABILITY, ABILITY_LIST, SPELL_SAVE,
 } from 'data/bank'
 
 export const Combat = () => {
@@ -72,6 +72,11 @@ export const Combat = () => {
 				options={buildOptionsFromStrings(prop(ABILITY_LIST, formVals))}
 				label="Casting Ability"
 				formPath={[CASTING_ABILITY]}
+			/>
+			<NumberInput
+				readOnly
+				label="Spell Save DC"
+				formPath={[SPELL_SAVE]}
 			/>
 		</>
 	)

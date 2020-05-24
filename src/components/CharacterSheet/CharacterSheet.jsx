@@ -9,11 +9,13 @@ import AbilityScores from 'components/CharacterSheet/AbilityScores'
 import NumberInput from 'components/NumberInput'
 import Skills from 'components/CharacterSheet/Skills'
 import Combat from 'components/CharacterSheet/Combat'
+import HashViewer from 'components/HashViewer'
 
 import SheetContext from 'contexts/sheetContext'
 
 import {
 	LEVEL_UP_FUNC, LEVEL, INSPIRATION, PROF_BONUS, PAS_WIS,
+	PAS_WIS_FUNC,
 } from 'data/bank'
 
 const useStyles = createUseStyles({
@@ -34,11 +36,26 @@ export default () => {
 	const classes = useStyles()
 	const { formVals, setFormVals } = useContext(SheetContext)
 
+	// On each form field change, update the encoded string
+	const json = JSON.stringify(formVals)
+	const hash = window.btoa(json)
+
 	// Run level up effect, if one exists
 	const level = prop(LEVEL, formVals)
 	useEffect(() => {
 		propOr(F, LEVEL_UP_FUNC, formVals)(formVals, setFormVals, level)
 	}, [level])
+
+	// // Set passive wisdom based on mod, prof bonus, and prof
+	// useEffect(() => {
+	// 	const profMod = prop(PROF, wisdom) ? profBonus : 0
+	// 	const wisBonus = prop(MOD, wisdom) || 0
+	// 	setFormVals(assoc(
+	// 		PAS_WIS,
+	// 		10 + wisBonus + profMod,
+	// 		formVals,
+	// 	))
+	// }, [prop(MOD, wisdom), prop(PROF, wisdom), profBonus])
 
 	return (
 		<div className={classes.wrapper}>
@@ -65,6 +82,7 @@ export default () => {
 				<Skills />
 				<Combat />
 			</form>
+			<HashViewer string={hash} />
 		</div>
 	)
 }

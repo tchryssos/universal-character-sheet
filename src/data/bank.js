@@ -16,7 +16,7 @@ export const LEVEL_UP_FUNC = 'levelUpFunc'
 
 // START - ABILITIES - START
 export const ABILITY_SCORES = 'abilityScores' // schema key
-export const ABILITY_LIST = 'abilityList' // schem key
+export const ABILITY_LIST = 'abilityList' // schema key
 export const STR = 'strength'
 export const DEX = 'dexterity'
 export const CON = 'constitution'
@@ -33,6 +33,7 @@ export const TRAD_ABILITIES = [
 export const INSPIRATION = 'inspiration'
 export const PROF_BONUS = 'profBonus'
 export const PAS_WIS = 'pasWis'
+export const PAS_WIS_FUNC = 'pasWisFunc' // schema key
 export const DICE = [
 	{
 		label: 'd4',

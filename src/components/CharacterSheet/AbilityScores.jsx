@@ -82,47 +82,45 @@ const TableHeader = ({ classes }) => (
 
 const AttrRows = ({
 	classes, abilities, setFormVals, formVals,
-}) => {
-	return abilities.map(
-		(ability) => {
-			useEffect(() => { // On ability value change, update ability mod
-				setFormVals(assocPath(
-					[ABILITY_SCORES, ability, MOD],
-					modCalc(path([ABILITY_SCORES, ability, VAL], formVals)),
-					formVals,
-				))
-			}, [path([ABILITY_SCORES, ability, VAL], formVals)])
+}) => abilities.map(
+	(ability) => {
+		useEffect(() => { // On ability value change, update ability mod
+			setFormVals(assocPath(
+				[ABILITY_SCORES, ability, MOD],
+				modCalc(path([ABILITY_SCORES, ability, VAL], formVals)),
+				formVals,
+			))
+		}, [path([ABILITY_SCORES, ability, VAL], formVals)])
 
-			return (
-				<div className={classes.tableRow} key={ability}>
-					<div className={classes.nameBox}>
-						<Body>{ability}</Body>
-					</div>
-					<div className={classes.numberBox}>
-						<NumberInput
-							min={0}
-							max={30}
-							formPath={[ABILITY_SCORES, ability, VAL]}
-						/>
-					</div>
-					<div className={classes.numberBox}>
-						<NumberInput
-							min={-5}
-							max={10}
-							readOnly
-							formPath={[ABILITY_SCORES, ability, MOD]}
-						/>
-					</div>
-					<div className={classes.saveBox}>
-						<CheckboxInput
-							formPath={[ABILITY_SCORES, ability, PROF]}
-						/>
-					</div>
+		return (
+			<div className={classes.tableRow} key={ability}>
+				<div className={classes.nameBox}>
+					<Body>{ability}</Body>
 				</div>
-			)
-		},
-	)
-}
+				<div className={classes.numberBox}>
+					<NumberInput
+						min={0}
+						max={30}
+						formPath={[ABILITY_SCORES, ability, VAL]}
+					/>
+				</div>
+				<div className={classes.numberBox}>
+					<NumberInput
+						min={-5}
+						max={10}
+						readOnly
+						formPath={[ABILITY_SCORES, ability, MOD]}
+					/>
+				</div>
+				<div className={classes.saveBox}>
+					<CheckboxInput
+						formPath={[ABILITY_SCORES, ability, PROF]}
+					/>
+				</div>
+			</div>
+		)
+	},
+)
 
 const AbilityScores = () => {
 	const classes = useStyles()
