@@ -6,7 +6,7 @@ import prop from 'ramda/src/prop'
 
 import SheetContext from 'contexts/sheetContext'
 import {
-	PROF, ABILITY, MOD, SKILL_LIST, SKILLS,
+	PROF, ABILITY, MOD, SKILL_LIST, SKILLS, ABILITY_SCORES,
 } from 'data/bank'
 
 import NumberInput from 'components/NumberInput'
@@ -46,7 +46,7 @@ const SkillRows = ({
 			<NumberInput
 				readOnly
 				min={-5}
-				formPath={[path([SKILLS, skill, ABILITY], formVals), MOD]}
+				formPath={[ABILITY_SCORES, path([SKILLS, skill, ABILITY], formVals), MOD]}
 			/>
 			<CheckboxInput
 				formPath={[SKILLS, skill, PROF]}
@@ -60,6 +60,7 @@ const Skills = () => {
 	const classes = useStyles()
 	const { formVals } = useContext(SheetContext)
 	const skills = prop(SKILL_LIST, formVals)
+	console.log(formVals[SKILLS])
 	return orNull(
 		skills,
 		<div className={classes.skillsWrapper}>
