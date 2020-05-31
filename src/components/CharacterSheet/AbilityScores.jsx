@@ -74,7 +74,7 @@ const TableHeader = ({ classes }) => (
 		</div>
 		<div className={classes.saveBox}>
 			<Body lightText bold>
-				SCORE
+				PROF
 			</Body>
 		</div>
 	</div>

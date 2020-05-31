@@ -26,14 +26,13 @@ export const CHA = 'charisma'
 export const TRAD_ABILITIES = [
 	STR, DEX, CON, WIS, INT, CHA,
 ]
-
 // END - ABILITIES - END
 
 // START - MISC GAME - START
 export const INSPIRATION = 'inspiration'
 export const PROF_BONUS = 'profBonus'
 export const PAS_WIS = 'pasWis'
-export const PAS_WIS_FUNC = 'pasWisFunc' // schema key
+export const LINKED_STAT_UPDATE_FUNCS = 'linkedStatUpdateFuncs' // schema key, actual funcs must be memoized
 export const DICE = [
 	{
 		label: 'd4',
