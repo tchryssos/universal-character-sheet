@@ -32,7 +32,7 @@ export const TRAD_ABILITIES = [
 export const INSPIRATION = 'inspiration'
 export const PROF_BONUS = 'profBonus'
 export const PAS_WIS = 'pasWis'
-export const LINKED_STAT_UPDATE_FUNCS = 'linkedStatUpdateFuncs' // schema key, actual funcs must be memoized
+export const LINKED_STAT_UPDATE_EFFECTS = 'linkedStatUpdateEffects' // schema key, actual funcs must be memoized
 export const DICE = [
 	{
 		label: 'd4',
